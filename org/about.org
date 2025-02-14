@@ -1,0 +1,12 @@
+#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: /
+#+TITLE: About
+#+DRAFT: true
+#+HUGO_TAGS: personal
+#+HUGO_LAYOUT: about
+
+
+Hi, I'm Seth and this is my blog...
+
+
+Here is a sample C program.

@@ -1,0 +1,17 @@
+#+HUGO_BASE_DIR: ../../
+#+HUGO_SECTION: posts
+#+TITLE: Blogging with Emacs
+#+DATE: 2025-02-13
+#+DRAFT: true
+#+HUGO_TAGS: first-post emacs org-mode hugo
+#+HUGO_CATEGORIES: general blogging
+
+* Introduction
+Welcome to my first blog post! Here's where I'll write my content...
+
+
+* Main Content
+More detailed thoughts here...
+
+* Conclusion/
+Wrapping up thoughts...
