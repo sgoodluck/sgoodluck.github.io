@@ -2,9 +2,7 @@
 <main class="content">
   <div class="post">
     <h1 class="post-title">{{ .Title }}</h1>
-    {{ if .Site.Params.subtitle }}
-    <p class="post-subtitle">{{ .Site.Params.subtitle }}</p>
-    {{ end }} {{ .Content }}
+    {{ .Content }}
   </div>
 </main>
 {{ end }}
