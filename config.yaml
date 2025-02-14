@@ -3,9 +3,22 @@ languageCode: 'en-us'
 title: 'The Good Code Guy'
 theme: 'smol'
 
+# Build settings
+buildDrafts: false  # Prevents posts marked as drafts from being included in the final build
+buildFuture: false  # Won't publish posts with a future date until that date arrives
+buildExpired: false # Won't publish posts that have an expiration date that has passed
+
+# Content Management
+enableGitInfo: true # Uses Git commit history for content dates if date unspecified
+enableRobotsTXT: true # Allow robots to index
+
 params:
   subtitle: "A personal blog about whatever I want"
   dateFmt: "02.01.2006 15:04"
+
+  # SEO and Social settings
+  description: "A personal blog about whatever I want" # Add a description for SEO
+  # images: ["site-feature-image.jpg"] # Add if you have a default sharing image
 
 menu:
   main:
@@ -17,23 +30,24 @@ menu:
       name: Posts
       url: /posts/
       weight: 1
-
     - identifier: categories
       name: Categories
       url: /categories/
       weight: 2
-
     - identifier: tags
       name: Tags
       url: /tags/
       weight: 3
-
   footer:
     - name: Github
       url: https://github.com/example
       weight: 1
-
     - name: LinkedIn
       url: https://example.com/@user
       weight: 2
 
+# Taxonomies - Explicit content organization
+taxonomies:
+  category: categories # allow post categorization
+  tag: tags # Allow post tag groups
+  series: series # Allow post series
