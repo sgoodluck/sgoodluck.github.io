@@ -19,7 +19,7 @@ _The secondary disclaimer is that you will encounter my unfiltered opinions abou
 
 Some of these you might find agreeable, others amusing, and potentially some upsetting. That's fine. My purpose isn't to impress you, it is purely to express myself (onlookers be damned).
 
-That being said, I do hope that some of the content here proves illuminating for you. Many a time I have searched desperately for something to eventually chance upon a blog written by some stranger on the internet who shared exactly the advice or guide I needed. This blog is in no small part my way of trying to give back to our collective digital mind some useful nuggets I pick up along the way.
+That being said, I do hope that some of the content here proves illuminating for you. Many a time I have searched desperately for something to eventually chance upon a blog written by some stranger on the internet who shared exactly the advice or guide I needed. This blog is in no small part my way of trying to give back to our collective digital mind with some useful nuggets I pick up along the way.
 
 
 ### The Good Code Guy {#the-good-code-guy}
