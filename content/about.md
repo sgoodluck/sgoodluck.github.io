@@ -34,3 +34,8 @@ I'm a professional software engineer with over a decade of experience, serial en
 I love writing, exercise, programming, learning, exploring, traveling, photography, and much more.
 
 My degree is in Computer Science Engineering &amp; Global Entrepreneurship (a mouthful, I know) and my alma mater is Cornell University.
+
+
+## Hi Alessandra! {#hi-alessandra}
+
+I love you :)
