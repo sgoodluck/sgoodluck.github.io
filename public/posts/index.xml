@@ -1,18 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on The Good Code Guy</title>
-    <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Posts on The Good Code Guy</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Truth In Tension</title>
-      <link>http://localhost:1313/posts/truth-in-tension/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/truth-in-tension/</guid>
-      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;&#xA;&lt;p&gt;We live in a world dominated by the too-quick-to-offend and the offended-too-quickly.&lt;/p&gt;&#xA;&lt;p&gt;Reality, however, is multi-faceted, each face colored by individual experience.&lt;/p&gt;&#xA;&lt;p&gt;For whatever reason (there are multiple) our capacity to understand this nuance has lagged behind our access to virtually infinite information.&lt;/p&gt;&#xA;&lt;p&gt;The result is a breakdown in society, with sects colored by worldviews orchestrated by an unconscious engagement machine, mechanically feeding us whatever data fuels focus and engagement.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on The Good Code Guy</title><link>https://tgcg.xyz/posts/</link><description>Recent content in Posts on The Good Code Guy</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 20 Feb 2025 15:01:52 -0800</lastBuildDate><atom:link href="https://tgcg.xyz/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Blogging with Emacs</title><link>https://tgcg.xyz/posts/blogging-with-emacs/</link><pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate><guid>https://tgcg.xyz/posts/blogging-with-emacs/</guid><description>&lt;p>Hello world&lt;/p></description></item><item><title>Truth In Tension</title><link>https://tgcg.xyz/posts/truth-in-tension/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tgcg.xyz/posts/truth-in-tension/</guid><description>&lt;h2 id="intro">Intro&lt;/h2>
+&lt;p>We live in a world dominated by the too-quick-to-offend and the offended-too-quickly.&lt;/p>
+&lt;p>Reality, however, is multi-faceted, each face colored by individual experience.&lt;/p>
+&lt;p>Our capacity to understand this nuance has lagged behind our access to virtually infinite information.&lt;/p>
+&lt;p>The result is a breakdown in society, with sects colored by worldviews orchestrated by an unconscious engagement machine, mechanically feeding us whatever data fuels focus and engagement.&lt;/p>
+&lt;p>In the light, this technologically doped filtering is a godsend &amp;ndash; we can find products we love, information we need, people we enjoy, and perspectives we harbor; we become coddled in an instant with whatever cranial comfort we desire.&lt;/p></description></item></channel></rss>
