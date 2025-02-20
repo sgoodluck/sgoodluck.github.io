@@ -1,6 +1,7 @@
 +++
 title = "Truth In Tension"
 author = ["Seth Martin"]
+date = 2025-02-19T21:57:00-08:00
 tags = ["pluralism", "rationalism", "politics"]
 categories = ["philosophy"]
 draft = false
