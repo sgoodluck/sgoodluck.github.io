@@ -7,5 +7,12 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Truth In Tension</title>
+      <link>http://localhost:1313/posts/truth-in-tension/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/truth-in-tension/</guid>
+      <description>&lt;h2 id=&#34;intro&#34;&gt;Intro&lt;/h2&gt;&#xA;&lt;p&gt;We live in a world dominated by the too-quick-to-offend and the offended-too-quickly.&lt;/p&gt;&#xA;&lt;p&gt;Reality, however, is multi-faceted, each face colored by individual experience.&lt;/p&gt;&#xA;&lt;p&gt;For whatever reason (there are multiple) our capacity to understand this nuance has lagged behind our access to virtually infinite information.&lt;/p&gt;&#xA;&lt;p&gt;The result is a breakdown in society, with sects colored by worldviews orchestrated by an unconscious engagement machine, mechanically feeding us whatever data fuels focus and engagement.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
