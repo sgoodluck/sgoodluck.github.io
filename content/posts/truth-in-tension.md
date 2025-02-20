@@ -1,6 +1,8 @@
 +++
 title = "Truth In Tension"
 author = ["Seth Martin"]
+tags = ["pluralism", "rationalism", "politics"]
+categories = ["philosophy"]
 draft = false
 +++
 
