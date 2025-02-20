@@ -40,10 +40,10 @@ menu:
       weight: 3
   footer:
     - name: Github
-      url: https://github.com/example
+      url: https://github.com/sgoodluck
       weight: 1
     - name: LinkedIn
-      url: https://example.com/@user
+      url: https://www.linkedin.com/in/sgoodluck/
       weight: 2
 
 # Taxonomies - Explicit content organization

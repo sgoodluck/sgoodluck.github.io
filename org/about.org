@@ -11,30 +11,25 @@ Hi, I'm Seth and this is my blog.
 
 * About tgcg.xyz
 
-/My primary disclaimer is that the contents herein are ever evolving and that you may encounter opinions that I no longer hold and be offerred advice that is no longer warranted./
+/My primary disclaimer is that the contents here are always evolving and you may encounter opinions that I no longer hold or find advice that is no longer valid./
 
-The purpose of this blog is to give me a space to write about whatever I want to write about. My interests (and hence the content you might encounter) are broad and cover everything from politics & philosophy to computer science & physics.
+The purpose of this blog is to give me a space to write about whatever I want. My interests (and hence the content you might encounter) are broad and cover everything from politics & philosophy to computer science & physics.
 
 /The secondary disclaimer is that you will encounter my unfiltered opinions about many topics./
 
-Some of these you might find agreeable, others amusing, and potentially some upsetting. That's fine. My purpose isn't to impress you, it is purely to express myself (onlookers be damned).
+Some of these you might find agreeable, others amusing, and some upsetting. That's fine. My purpose isn't to impress you, it is purely to express myself.
 
-That being said, I do hope that some of the content here proves illuminating for you. Many a time I have searched desperately for something to eventually chance upon a blog written by some stranger on the internet who shared exactly the advice or guide I needed. This blog is in no small part my way of trying to give back to our collective digital mind with some useful nuggets I pick up along the way.
+Having said that, I hope some of the content here proves useful for you. Many times I have searched desperately for something to eventually chance upon a blog written by some stranger on the internet who shared exactly the advice or guide I needed. This blog is in no small part also my way of trying to give back to our collective digital mind with useful nuggets I've picked up along the way.
 
 ** The Good Code Guy
 
-Why this title? Well, it happens to be cute sounding, I have an email that corresponds to that, and it is an accurate reflection of something I care a lot about.
+Why this title? Well, it happens to be cute sounding, I have an email that corresponds to it (GoodCodeGuy@pm.me if you want to reach out), and perhaps most importantly is an accurate reflection of something I care a lot about.
 
 
 * About me
 
-I'm a professional software engineer with over a decade of experience, serial entrepreneur, and all-around nerd.
+I'm a professional software engineer, serial entrepreneur, and all-around nerd.
 
 I love writing, exercise, programming, learning, exploring, traveling, photography, and much more.
 
-My degree is in Computer Science Engineering & Global Entrepreneurship (a mouthful, I know) and my alma mater is Cornell University.
-
-
-* Hi Alessandra!
-
-I love you :)
+My degree is in Computer Science Engineering & Global Entrepreneurship (a mouthful, I know) and my Alma mater is Cornell University.
