@@ -10,7 +10,7 @@ We live in a world dominated by the too-quick-to-offend and the offended-too-qui
 
 Reality, however, is multi-faceted, each face colored by individual experience.
 
-For whatever reason (there are multiple) our capacity to understand this nuance has lagged behind our access to virtually infinite information.
+Our capacity to understand this nuance has lagged behind our access to virtually infinite information.
 
 The result is a breakdown in society, with sects colored by worldviews orchestrated by an unconscious engagement machine, mechanically feeding us whatever data fuels focus and engagement.
 
