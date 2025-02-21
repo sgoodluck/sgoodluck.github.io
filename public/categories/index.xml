@@ -6,8 +6,15 @@
     <description>Recent content in Categories on The Good Code Guy</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2025 14:45:31 -0800</lastBuildDate>
+    <lastBuildDate>Fri, 21 Feb 2025 15:35:00 -0800</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello</title>
+      <link>http://localhost:1313/categories/hello/</link>
+      <pubDate>Fri, 21 Feb 2025 15:35:00 -0800</pubDate>
+      <guid>http://localhost:1313/categories/hello/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Blogging</title>
       <link>http://localhost:1313/categories/blogging/</link>
