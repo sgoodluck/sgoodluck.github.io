@@ -44,7 +44,7 @@
 		       
 
 			<div>
-				<p>In this post, I&rsquo;m going to show you how to setup a blogging workflow using emacs and other free tools. At the end of this, you will have a blog just like this one and be able to create posts in a matter of keystrokes that get published online without spending a dime.</p>
+				<p>In this post, I&rsquo;m going to show you how to setup a blogging workflow using Emacs and other free tools. At the end of this, you will have a blog just like this one and be able to create posts in a matter of keystrokes that get published online without spending a dime.</p>
 <p>I don&rsquo;t really know how to write these kinds of tutorial posts, so I&rsquo;m just going to get right into it.</p>
 <h2 id="why-blog-in-emacs">Why blog in Emacs?</h2>
 <p>In one word, <strong>efficiency</strong>. In a few keystrokes, I can generate a new blog file, write, and publish it all without leaving my keyboard and often faster than you can finish a cup of coffee (depending on the length of the post of course).</p>
@@ -56,38 +56,38 @@
 <h3 id="some-prerequisite-knowledge">Some prerequisite knowledge</h3>
 <p>I assume a lot of people coming to this know what these tools are, but it is possible someone doesn&rsquo;t or is trying to grapple with the ecosystem of tools. I&rsquo;ll briefly explain each of these pieces so that you know why we are using each of these.</p>
 <h4 id="doom-emacs">Doom Emacs</h4>
-<p>Yes, I know I&rsquo;m such a heathen. Right now, I&rsquo;m using <a href="https://github.com/doomemacs/doomemacs">Doom Emacs</a>. If you aren&rsquo;t familiar, Doom is an excellent, mostly pre-configured version of Emacs. It is similar to Spacemacs and other &ldquo;beginner friendly&rdquo; emacs configurations.</p>
+<p>Yes, I know I&rsquo;m such a heathen. Right now, I&rsquo;m using <a href="https://github.com/doomemacs/doomemacs">Doom Emacs</a>. If you aren&rsquo;t familiar, Doom is a pre-configured version of Emacs. It is similar to Spacemacs and other &ldquo;beginner friendly&rdquo; Emacs configurations and it uses VIM keybindings for all you Emacs curious vim users out there.</p>
 <p>If you&rsquo;re still exploring Emacs, it is a great config to consider.</p>
 <p><strong>You do not need to use Doom Emacs for this tutorial</strong>, I have tried to note wherever an instruction uses some Doom specific thing, so you can proceed even if you&rsquo;re not using Doom.</p>
 <h4 id="emacs-org-mode">Emacs Org Mode</h4>
-<p>If you are into Emacs, you already know how incredible <a href="https://orgmode.org/">Org mode</a> is. If you are new to Emacs, you probably keep hearing about it but might not understand yet. In short, Org-mode (.org files in emacs) is a type of text file formatting combined with the Org mode code package that makes for the best editing experience on earth. OneNote, Notion, Obsidian, and every other note-taking tool du jour pail in comparison to its simplicity and leverage.</p>
+<p>If you are into Emacs, you already know how incredible <a href="https://orgmode.org/">Org mode</a> is. If you are new to Emacs, you probably keep hearing about it but might not understand yet. In short, Org-mode (.org files in Emacs) is a type of text file formatting combined with the Org mode code package that makes for the best editing experience on earth. OneNote, Notion, Obsidian, and every other note-taking tool du jour pail in comparison to its simplicity and leverage.</p>
 <p>No you don&rsquo;t need to abandon your favorite note taking application yet, but trust us when we say that it is crazy good.</p>
 <p>If you want to have a good base level understanding, watch this 16-year old video from the creator of Org-mode: <a href="https://www.youtube.com/watch?v=oJTwQvgfgMM&amp;t=2317s">Emacs Org-mode - a system for note-taking and project planning</a>. You will have a good understanding of why it is useful.</p>
-<p>When writing blog posts, we will be writing in a `.org` file afterall. This guide has a brief org-mode install and configuration.</p>
+<p>When writing blog posts, we will be writing in a <code>.org</code> file. This guide has a brief org-mode install and configuration.</p>
 <h4 id="hugo">Hugo</h4>
 <p><a href="https://gohugo.io/">Hugo is a static website generator</a>. In short, it lets you create a website with incredible speed and simplicity. It is free, open-source, and has numerous benefits. This guide uses Hugo (though there are plenty of other good options).</p>
 <p>Once you finish writing your blog post as an org file, we do an export that converts it to a Hugo markdown file and viola, you have a new post on your blog. Once published in your hosting platform of choice, it is live. Easy as cake.</p>
 <h4 id="github-pages">Github Pages</h4>
-<p>Finally, we make use of <a href="https://pages.github.com/">GitHub Pages</a>. This is a free hosting service provided by Github that lets you turn a github repository into a hosted website. You can publish your Hugo site anywhere you&rsquo;d like, but we will use Github pages because it integrates nicely and is dead simple.</p>
+<p>Finally, we make use of <a href="https://pages.github.com/">GitHub Pages</a>. This is a free hosting service provided by Github that lets you turn a Github repository into a hosted website. You can publish your Hugo site anywhere you&rsquo;d like, but we will use Github pages because it integrates nicely and is dead simple.</p>
 <h4 id="workflow">Workflow</h4>
 <p>So remember, the workflow is:</p>
 <ol>
 <li><code>Author</code> - write your blog-post.org file</li>
 <li><code>Export</code> - send it to your Hugo Site</li>
-<li><code>Push</code> - save your changes to github</li>
+<li><code>Push</code> - save your changes to Github</li>
 <li><code>Profit</code> - congratulations, your Blog is live</li>
 </ol>
 <h3 id="some-disclaimers">Some disclaimers</h3>
 <ul>
 <li>
-<p>I will be using Doom Emacs for this, if you are not using Doom Emacs this will still work for you but you will likely need to adapt the instructions below to fit your Emacs setup. I try to specify this where I can. Doing so is not hard and you can always check in with your favorite AI agent for how to do this for whatever flavor of emacs you are running. Yes ye old Emacs salts, I have my own entirely custom Emacs configuration too, but the last couple of weeks I&rsquo;ve been enjoying Doom Emacs.</p>
+<p>I will be using Doom Emacs for this, if you are not using Doom Emacs this will still work for you but you will likely need to adapt the instructions below to fit your Emacs setup. I try to specify this where I can. Doing so is not hard and you can always check in with your favorite AI agent for how to do this for whatever flavor of Emacs you are running. Yes ye old Emacs salts, I have my own entirely custom Emacs configuration too, but the last couple of weeks I&rsquo;ve been enjoying Doom Emacs.</p>
 </li>
 <li>
-<p>Emacs is a bit of a commitment, everyone&rsquo;s system is different. You might need to install some Emacs or system packages not specified in this guide. <strong>Use your judgement, read the error codes</strong>. AI systems and stackoverflow are your friend. Feel free to reach out if you really get stuck though.</p>
+<p>Emacs is a bit of a commitment, everyone&rsquo;s system is different. You might need to install some Emacs or system packages not specified in this guide. <strong>Use your judgement, read the error codes</strong>. AI systems and Stackoverflow are your friend. Feel free to reach out if you really get stuck though.</p>
 </li>
 </ul>
 <h2 id="setup">Setup</h2>
-<p>Ok let&rsquo;s get started.</p>
+<p>Let&rsquo;s get started.</p>
 <h3 id="setting-up-your-directories">Setting up your directories</h3>
 <p><strong>Note: You will need to adjust these to your preference. If you choose different directory structures, you must update them accordingly in the instructions below</strong></p>
 <p>We will be setting up the following directory structure:</p>
@@ -101,11 +101,11 @@
 <p>This structure approximately follows the popular &ldquo;PARA&rdquo; organization. You can always adjust it later.</p>
 <p>For now, just create the Org blog area in whatever way you want. You can use this terminal command if you&rsquo;re lazy: <code>mkdir -p ~/Documents/Areas/Blog/posts</code></p>
 <p><strong>Fun Fact:</strong> the <code>-p</code> flag creates intermediate directories as required</p>
-<p><strong>Fun Fact:</strong> You can do <code>M-x man</code> and then type the command you want to learn more about. This is really handy when guides tell you to run some terminal command with some flags. You should always know what those flags do.</p>
+<p><strong>Fun Fact:</strong> In Emacs, you can type <code>M-x man</code> followed by type the command you want to learn more about. This is really handy when guides tell you to run some terminal command with some flags. You should always know what those flags do; not taking the time to inspect their effects is stupid and can get you into a lot of trouble.</p>
 <h3 id="setting-up-org-mode">Setting up Org Mode</h3>
 <h4 id="installing-org-mode">Installing Org Mode</h4>
 <p>The first thing we will need to do is to install Org Mode. Good news! If you are using any modern version of GNU Emacs (version 22.1 or later), Org Mode actually comes preinstalled. You might not need to do anything.</p>
-<p>If you must, install it in your package manager and enable it in your <code>init.el</code> file. If you are trying Doom Emacs, you simply uncommment the <code>org ; organize your plain life in plain text</code> line. If you are using another version of emacs, you will simply add a <code>require 'org</code>&rsquo; to your <code>.emacs</code> or <code>init.el</code> file.</p>
+<p>If you must, install it in your package manager and enable it in your <code>init.el</code> file. If you are trying Doom Emacs, you simply uncommment the <code>org ; organize your plain life in plain text</code> line. If you are using another version of Emacs, you will simply add a <code>require 'org</code>&rsquo; to your <code>.emacs</code> or <code>init.el</code> file.</p>
 <p>Lookup instructions for your version of org mode.</p>
 <h4 id="configuring-org-mode">Configuring Org Mode</h4>
 <p>I like to do some moderate configuration of Org. My dotfiles are more expansive than this, but this is the smallest setup that should work for you.</p>
@@ -159,19 +159,19 @@
 <p>Now it is time to setup Hugo; this is how you will build your website.</p>
 <h4 id="installing-hugo">Installing Hugo</h4>
 <p>First, <a href="https://gohugo.io/installation/">Install Hugo</a> on your system.</p>
-<p>Next, add the <code>ox-hugo</code> package to your emacs <code>packages.el</code> file (or wherever you install emacs packages).</p>
-<p>In doom emacs, you just add the following line to your <code>packages.el</code> file:</p>
+<p>Next, add the <code>ox-hugo</code> package to your Emacs <code>packages.el</code> file (or wherever you install Emacs packages).</p>
+<p>In doom Emacs, you just add the following line to your <code>packages.el</code> file:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span>(package! ox-hugo)   <span style="color:#75715e">;; blogging</span>
 </span></span></code></pre></div><h4 id="configuring-hugo">Configuring Hugo</h4>
 <p>Add the following lines to your <code>config.el</code> file and run <code>doom sync</code> if you&rsquo;re on doom or reload you configuration in whatever way you need.</p>
-<p>(<strong>Note</strong>: If you are not using doom emacs, you probably need to remove the <code>after! ox</code> macro)</p>
+<p>(<strong>Note</strong>: If you are not using doom Emacs, you probably need to remove the <code>after! ox</code> macro)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span><span style="color:#75715e">;;;; Blog Configuration</span>
 </span></span><span style="display:flex;"><span>(after! ox
 </span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">require</span> <span style="color:#e6db74">&#39;ox-hugo</span>))
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> org-hugo-base-dir <span style="color:#e6db74">&#34;~/Documents/Projects/hugo-blog/&#34;</span>)
 </span></span></code></pre></div><h4 id="initializing-your-hugo-site">Initializing your Hugo site</h4>
-<p>Alright, time to initialize your hugo website. Remember, this is the thing that will actually become your blog.</p>
+<p>Alright, time to initialize your Hugo website. Remember, this is the thing that will actually become your blog.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Create the projects directory if it doesn&#39;t exist</span>
 </span></span><span style="display:flex;"><span>mkdir -p ~/Documents/Projects
 </span></span><span style="display:flex;"><span>
@@ -181,24 +181,21 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize git</span>
 </span></span><span style="display:flex;"><span>cd ~/Documents/Projects/hugo-blog
 </span></span><span style="display:flex;"><span>git init
-</span></span></code></pre></div><p>Next, you&rsquo;ll need to add a theme. For example, to add the popular PaperMod theme: You can find a theme that you enjoy <a href="https://themes.gohugo.io/">here</a>. The rest of this guide will assume you follow directions, more complex themes may require some variation in setup. So I suggest you follow the instructions and then you can change your theme later.</p>
+</span></span></code></pre></div><p>Next, you&rsquo;ll need to add a theme. You can find a theme that you enjoy <a href="https://themes.gohugo.io/">here</a>.</p>
+<p>The rest of this guide will assume you follow these directions, more complex themes may require some variation in setup. So I suggest you follow the instructions and then you can change your theme later. For example, to add the popular <a href="https://adityatelange.github.io/hugo-PaperMod/">PaperMod</a> theme:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Add theme as a git submodule (recommended)</span>
 </span></span><span style="display:flex;"><span>git submodule add https://github.com/adityatelange/hugo-PaperMod themes/PaperMod
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#+end_src .</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Next, open up your <span style="color:#f92672">=</span>config.yaml<span style="color:#f92672">=</span> to use the theme <span style="color:#f92672">(</span>located in <span style="color:#f92672">=</span>~/Documents/Projects/hugo-blog<span style="color:#f92672">=</span> root directory<span style="color:#f92672">)</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#+begin_src yaml</span>
-</span></span><span style="display:flex;"><span>baseURL: <span style="color:#e6db74">&#39;http://example.org/&#39;</span>
-</span></span><span style="display:flex;"><span>languageCode: <span style="color:#e6db74">&#39;en-us&#39;</span>
-</span></span><span style="display:flex;"><span>title: <span style="color:#e6db74">&#39;My Blog&#39;</span>
-</span></span><span style="display:flex;"><span>theme: <span style="color:#e6db74">&#39;PaperMod&#39;</span>
+</span></span></code></pre></div><p>Next, open up your <code>config.yaml</code> to use the theme (located in <code>~/Documents/Projects/hugo-blog</code> root directory):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">baseURL</span>: <span style="color:#e6db74">&#39;http://example.org/&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">languageCode</span>: <span style="color:#e6db74">&#39;en-us&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">title</span>: <span style="color:#e6db74">&#39;My Blog&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">theme</span>: <span style="color:#e6db74">&#39;PaperMod&#39;</span>
 </span></span></code></pre></div><p><strong>Note:</strong> Hugo supports both YAML and TOML configurations. We&rsquo;re using YAML here as it&rsquo;s often more readable for newcomers.</p>
 <h4 id="testing-out-hugo">Testing out Hugo</h4>
 <p>Assuming you&rsquo;ve made it this far, let&rsquo;s test everything out before we publish it.</p>
 <ul>
 <li>
-<p>Starting the Hugo Dev Server</p>
+<p>Start the Hugo Dev Sever</p>
 <p>Open up your terminal of choice and navigate to the hugo-blog directory:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~/Documents/Projects/hugo-blog
 </span></span></code></pre></div><p>Now, run the Hugo development server:</p>
@@ -219,9 +216,9 @@ Press Ctrl+C to stop
 <li>In Emacs, use the org-capture command (<code>SPC X b</code> or <code>C-c c b</code>) to create a new post</li>
 <li>Write some test content</li>
 <li>Save the file</li>
-<li>Export to Hugo by pressing <code>SPC m e H h</code> from within your org file</li>
+<li>Export to Hugo by pressing <code>SPC m e H h</code> (<code>C-c C-e H h</code> for not evil users) from within your org file</li>
 </ol>
-<p>This should take your existing new-post blog file and export it right to your hugo-blog site. This was enabled through the <code>(setq org-hugo-base-dir &quot;~/Documents/Projects/hugo-blog/&quot;)</code> line in your <code>config.el</code> from earlier from earlier.</p>
+<p>This should take your existing new-post blog file and export it right to your hugo-blog site. We enabled this shortcut by adding <code>(setq org-hugo-base-dir &quot;~/Documents/Projects/hugo-blog/&quot;)</code> to our emacs config earlier.</p>
 <p><strong>Note:</strong> If your Hugo server is still running, it will automatically detect changes and refresh your browser.</p>
 <p>Congratulations, you are now blogging with Emacs! You can take your hugo-blog and put it anywhere you&rsquo;d like. If you want to post it to Github pages, go ahead and continue to follow along below.</p>
 <h2 id="publishing">Publishing</h2>
@@ -237,7 +234,7 @@ Press Ctrl+C to stop
 </span></span><span style="display:flex;"><span>git branch -M main
 </span></span><span style="display:flex;"><span>git push -u origin main
 </span></span></code></pre></div><h3 id="setting-up-github-actions">Setting up GitHub Actions</h3>
-<p>Create a github workflow file in your hugo-blog at <code>~/Documents/Projects/hugo-blog/.github/workflows/hugo.yaml</code> with the following content</p>
+<p>Create a Github workflow file in your hugo-blog at <code>~/Documents/Projects/hugo-blog/.github/workflows/hugo.yaml</code> with the following content</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># Workflow to build and deploy a Hugo site to GitHub Pages</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Hugo site to Pages</span>
 </span></span><span style="display:flex;"><span>
@@ -299,11 +296,7 @@ Press Ctrl+C to stop
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">env</span>:
 </span></span><span style="display:flex;"><span>          <span style="color:#f92672">HUGO_CACHEDIR</span>: <span style="color:#ae81ff">${{ runner.temp }}/hugo_cache </span> <span style="color:#75715e"># Cache directory for faster builds</span>
 </span></span><span style="display:flex;"><span>          <span style="color:#f92672">HUGO_ENVIRONMENT</span>: <span style="color:#ae81ff">production                  </span> <span style="color:#75715e"># Set environment to production</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          hugo \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            --gc \             # Run garbage collection on resources
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            --minify \         # Minify output files
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            --baseURL &#34;${{ steps.pages.outputs.base_url }}/&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo --gc --minify --baseURL &#34;${{ steps.pages.outputs.base_url }}/&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Upload built site</span>
 </span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Upload artifact</span>
@@ -329,7 +322,43 @@ Press Ctrl+C to stop
 <li>Wait a few minutes, then visit <code>https://yourusername.github.io</code></li>
 </ol>
 <p>Your blog should now be live! Any time you push changes to your main branch, GitHub Actions will automatically rebuild and deploy your site.</p>
+<h3 id="setting-up-a-custom-domain--optional">Setting up a Custom Domain (optional)</h3>
+<p>If you want to use your own domain (like <code>myblog.com</code>) instead of <code>username.github.io</code>, follow these steps:</p>
+<ol>
+<li>
+<p>Acquire a URL if you don&rsquo;t have one already</p>
+</li>
+<li>
+<p>Configure your domain&rsquo;s DNS:</p>
+<pre tabindex="0"><code class="language-nil" data-lang="nil">   # Add these records at your domain registrar
+   Type    Name               Value
+   A       @                  185.199.108.153
+   A       @                  185.199.109.153
+   A       @                  185.199.110.153
+   A       @                  185.199.111.153
+   CNAME   www               yourusername.github.io.
+</code></pre></li>
+<li>
+<p>Create a <code>CNAME</code> file in your Hugo site&rsquo;s <code>static</code> directory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>   echo <span style="color:#e6db74">&#34;yourdomain.com&#34;</span> &gt; ~/Documents/Projects/hugo-blog/static/CNAME
+</span></span></code></pre></div></li>
+<li>
+<p>Update your Hugo configuration in <code>config.yaml</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>   <span style="color:#f92672">baseURL</span>: <span style="color:#e6db74">&#39;https://yourdomain.com&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>In your GitHub repository:</p>
+<ul>
+<li>Go to Settings → Pages</li>
+<li>Under &ldquo;Custom domain&rdquo;, enter your domain</li>
+<li>Check &ldquo;Enforce HTTPS&rdquo; (recommended)</li>
+</ul>
+</li>
+</ol>
+<p><strong>Note:</strong> DNS changes can take up to 48 hours to propagate, though it usually happens much faster.
+<strong>Pro tip:</strong> The <code>CNAME</code> file in the <code>static</code> directory ensures your custom domain setting persists even after rebuilding your site.</p>
 <h2 id="summary">Summary</h2>
+<p>Congratulations, at this point you should have a blogging capacity via Emacs! If you have any questions, feel free to reach out. If you found this post useful, please feel free to share it.</p>
 
 			</div>
 		</article>
