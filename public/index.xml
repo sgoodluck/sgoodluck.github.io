@@ -6,8 +6,15 @@
     <description>Recent content on The Good Code Guy</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2025 14:04:33 -0800</lastBuildDate>
+    <lastBuildDate>Fri, 21 Feb 2025 15:04:12 -0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hi Hans</title>
+      <link>http://localhost:1313/posts/hi-hans/</link>
+      <pubDate>Fri, 21 Feb 2025 15:03:00 -0800</pubDate>
+      <guid>http://localhost:1313/posts/hi-hans/</guid>
+      <description>&lt;p&gt;This is a post!&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Blogging with Emacs</title>
       <link>http://localhost:1313/posts/blogging-with-emacs/</link>
