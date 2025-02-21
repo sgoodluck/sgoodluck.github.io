@@ -155,8 +155,8 @@ We will do two things: (1) Specify the org-directory and (2) create an org captu
            ,(concat "#+TITLE: %^{Post title}\n"
                     "#+DATE: %<%Y-%m-%d %H:%M:%S %z>>\n"
                     "#+HUGO_DRAFT: true\n"
-                    "#+HUGO_CATEGORIES[]: %^{Categories}\n"
-                    "#+HUGO_TAGS[]: %^{Tags}\n"
+                    "#+HUGO_CATEGORIES: %^{Categories}\n"
+                    "#+HUGO_TAGS: %^{Tags}\n"
                     "\n"
                     "%?")
            :immediate-finish nil
@@ -338,30 +338,30 @@ name: Deploy Hugo site to Pages
 
 on:
   push:
-    branches: [main]  # Triggers on pushes to main branch
-  workflow_dispatch:  # Allows manual trigger from GitHub Actions UI
+    branches: [main] # Triggers on pushes to main branch
+  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
 
 # Security permissions
 permissions:
-  contents: read      # Read repository contents
-  pages: write       # Write to GitHub Pages
-  id-token: write    # Write identity token for authentication
+  contents: read # Read repository contents
+  pages: write # Write to GitHub Pages
+  id-token: write # Write identity token for authentication
 
 # Deployment concurrency settings
 concurrency:
   group: "pages"
-  cancel-in-progress: false  # Don't cancel existing deployments
+  cancel-in-progress: false # Don't cancel existing deployments
 
 defaults:
   run:
-    shell: bash      # Use bash shell for all run steps
+    shell: bash # Use bash shell for all run steps
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.141.0  # Specify Hugo version explicitly
-      TZ: America/Los_Angeles  # Set timezone for builds
+      HUGO_VERSION: 0.141.0 # Specify Hugo version explicitly
+      TZ: America/Los_Angeles # Set timezone for builds
     steps:
       # Install Hugo extended version (supports SCSS/SASS)
       - name: Install Hugo CLI
@@ -377,8 +377,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive  # Get theme submodules
-          fetch-depth: 0         # Full history for .GitInfo
+          submodules: recursive # Get theme submodules
+          fetch-depth: 0 # Full history for .GitInfo
 
       # Configure GitHub Pages
       - name: Setup Pages
@@ -389,25 +389,29 @@ jobs:
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
+      # Clean content directory before build
+      - name: Clean content directory
+        run: rm -rf content/posts/*
+
       # Build Hugo site
       - name: Build with Hugo
         env:
-          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache  # Cache directory for faster builds
-          HUGO_ENVIRONMENT: production                   # Set environment to production
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache # Cache directory for faster builds
+          HUGO_ENVIRONMENT: production # Set environment to production
         run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       # Upload built site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public       # Directory containing built site
+          path: ./public # Directory containing built site
 
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}  # URL of deployed site
+      url: ${{ steps.deployment.outputs.page_url }} # URL of deployed site
     runs-on: ubuntu-latest
-    needs: build              # Wait for build job to complete
+    needs: build # Wait for build job to complete
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

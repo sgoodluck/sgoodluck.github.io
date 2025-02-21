@@ -54,6 +54,10 @@ jobs:
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
+      # Clean content directory before build
+      - name: Clean content directory
+        run: rm -rf content/posts/*
+
       # Build Hugo site
       - name: Build with Hugo
         env:
