@@ -41,6 +41,7 @@ h2,
 h3 {
     line-height: 1.2;
 }
+/**
 p > code {
     color: var(--precolor);
     background: var(--prebgcolor);
@@ -48,9 +49,23 @@ p > code {
 }
 code {
     color: var(--precolor);
-    /*background: var(--prebgcolor);*/
     padding: 2px;
 }
+*/
+p > code {
+    color: #d63384;
+    background: #f5f5f5;
+    padding: 2px;
+    border-radius: 3px; /* Optional: rounded corners */
+}
+
+code {
+    color: #d63384;
+    background: #f5f5f5;
+    padding: 2px;
+    border-radius: 3px;
+}
+
 pre {
     color: var(--precolor);
     background: var(--prebgcolor);

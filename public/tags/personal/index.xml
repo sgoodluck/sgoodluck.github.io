@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Personal on The Good Code Guy</title><link>https://tgcg.xyz/tags/personal/</link><description>Recent content in Personal on The Good Code Guy</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://tgcg.xyz/tags/personal/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://tgcg.xyz/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://tgcg.xyz/about/</guid><description>&lt;p>Hi, I&amp;rsquo;m Seth and this is my blog.&lt;/p>
-&lt;h2 id="about-tgcg-dot-xyz">About tgcg.xyz&lt;/h2>
-&lt;p>&lt;em>My primary disclaimer is that the contents herein are ever evolving and that you may encounter opinions that I no longer hold and be offerred advice that is no longer warranted.&lt;/em>&lt;/p>
-&lt;p>The purpose of this blog is to give me a space to write about whatever I want to write about. My interests (and hence the content you might encounter) are broad and cover everything from politics &amp;amp; philosophy to computer science &amp;amp; physics.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Personal on The Good Code Guy</title>
+    <link>http://localhost:1313/tags/personal/</link>
+    <description>Recent content in Personal on The Good Code Guy</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/tags/personal/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;Hi, I&amp;rsquo;m Seth and this is my blog.&lt;/p&gt;&#xA;&lt;h2 id=&#34;about-tgcg-dot-xyz&#34;&gt;About tgcg.xyz&lt;/h2&gt;&#xA;&lt;p&gt;&lt;em&gt;My primary disclaimer is that the contents herein are ever evolving and that you may encounter opinions that I no longer hold and be offerred advice that is no longer warranted.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;The purpose of this blog is to give me a space to write about whatever I want to write about. My interests (and hence the content you might encounter) are broad and cover everything from politics &amp;amp; philosophy to computer science &amp;amp; physics.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on The Good Code Guy</title>
-    <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Posts on The Good Code Guy</description>
+    <title>Philosophy on The Good Code Guy</title>
+    <link>http://localhost:1313/categories/philosophy/</link>
+    <description>Recent content in Philosophy on The Good Code Guy</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 20 Feb 2025 15:43:53 -0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Blogging with Emacs</title>
-      <link>http://localhost:1313/posts/blogging-with-emacs/</link>
-      <pubDate>Thu, 20 Feb 2025 15:33:00 -0800</pubDate>
-      <guid>http://localhost:1313/posts/blogging-with-emacs/</guid>
-      <description>&lt;p&gt;In this post, I&amp;rsquo;m going to show you how to setup a blogging workflow using emacs and other free tools. At the end of this, you will have a blog just like this one and be able to create posts in a matter of keystrokes that get published online without spending a dime.&lt;/p&gt;&#xA;&lt;p&gt;I don&amp;rsquo;t really know how to write these kinds of tutorial posts, so I&amp;rsquo;m just going to get right into it.&lt;/p&gt;</description>
-    </item>
+    <atom:link href="http://localhost:1313/categories/philosophy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Truth In Tension</title>
       <link>http://localhost:1313/posts/truth-in-tension/</link>

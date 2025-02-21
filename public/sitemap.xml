@@ -1,1 +1,43 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://tgcg.xyz/posts/blogging-with-emacs/</loc><lastmod>2025-02-20T15:01:52-08:00</lastmod></url><url><loc>https://tgcg.xyz/posts/</loc><lastmod>2025-02-20T15:01:52-08:00</lastmod></url><url><loc>https://tgcg.xyz/</loc><lastmod>2025-02-20T15:01:52-08:00</lastmod></url><url><loc>https://tgcg.xyz/about/</loc><lastmod>2025-02-14T22:33:01-08:00</lastmod></url><url><loc>https://tgcg.xyz/categories/</loc></url><url><loc>https://tgcg.xyz/tags/personal/</loc><lastmod>2025-02-14T22:33:01-08:00</lastmod></url><url><loc>https://tgcg.xyz/series/</loc></url><url><loc>https://tgcg.xyz/tags/</loc><lastmod>2025-02-14T22:33:01-08:00</lastmod></url><url><loc>https://tgcg.xyz/posts/truth-in-tension/</loc><lastmod>2025-02-20T14:29:18-08:00</lastmod></url></urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/posts/blogging-with-emacs/</loc>
+    <lastmod>2025-02-20T15:43:53-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-02-20T15:43:53-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-02-20T15:43:53-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2025-02-20T15:43:53-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/philosophy/</loc>
+    <lastmod>2025-02-20T15:43:53-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/pluralism/</loc>
+    <lastmod>2025-02-20T15:43:53-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/politics/</loc>
+    <lastmod>2025-02-20T15:43:53-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/rationalism/</loc>
+    <lastmod>2025-02-20T15:43:53-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-02-20T15:43:53-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/truth-in-tension/</loc>
+    <lastmod>2025-02-20T15:43:53-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/about/</loc>
+    <lastmod>2025-02-14T22:33:01-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/personal/</loc>
+    <lastmod>2025-02-14T22:33:01-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/series/</loc>
+  </url>
+</urlset>
