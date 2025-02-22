@@ -6,14 +6,21 @@
     <description>Recent content on The Good Code Guy</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2025 15:35:00 -0800</lastBuildDate>
+    <lastBuildDate>Fri, 21 Feb 2025 16:00:28 -0800</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello world</title>
       <link>http://localhost:1313/posts/hello-world/</link>
-      <pubDate>Fri, 21 Feb 2025 15:35:00 -0800</pubDate>
+      <pubDate>Fri, 21 Feb 2025 16:14:00 -0800</pubDate>
       <guid>http://localhost:1313/posts/hello-world/</guid>
-      <description>&lt;p&gt;This is a sample post!&lt;/p&gt;</description>
+      <description>&lt;p&gt;Give it some content!&#xA;Live reloads&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Nix-Darwin on MacOS</title>
+      <link>http://localhost:1313/posts/nixdarwin-on-macos/</link>
+      <pubDate>Fri, 21 Feb 2025 15:57:00 -0800</pubDate>
+      <guid>http://localhost:1313/posts/nixdarwin-on-macos/</guid>
+      <description>&lt;h2 id=&#34;a-post&#34;&gt;A post&lt;/h2&gt;&#xA;&lt;p&gt;I want this post to be a walkthrough of my entire Nix-Darwin setup that allows someone to migrate their world from normal mac to Nix world like that&lt;/p&gt;</description>
     </item>
     <item>
       <title>Blogging with Emacs</title>
