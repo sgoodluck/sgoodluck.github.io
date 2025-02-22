@@ -114,7 +114,7 @@ For now, just create the Org blog area in whatever way you want. You can use thi
 
 **Fun Fact:** the `-p` flag creates intermediate directories as required
 
-**Fun Fact:** In Emacs, you can type `M-x man` followed by type the command you want to learn more about. This is really handy when guides tell you to run some terminal command with some flags. You should always know what those flags do; not taking the time to inspect their effects is stupid and can get you into a lot of trouble.
+**Fun Fact:** In Emacs, you can type `M-x man` followed by the command you want to learn more about. This is really handy when guides tell you to run some terminal command with some flags. You should always know what those flags do; not taking the time to inspect their effects is stupid and can get you into a lot of trouble.
 
 
 ### Setting up Org Mode {#setting-up-org-mode}
