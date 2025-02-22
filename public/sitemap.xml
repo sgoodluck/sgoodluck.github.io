@@ -5,24 +5,6 @@
     <loc>http://localhost:1313/categories/</loc>
     <lastmod>2025-02-21T16:00:28-08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/hello/</loc>
-    <lastmod>2025-02-21T15:38:54-08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/hello-world/</loc>
-    <lastmod>2025-02-21T15:38:54-08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-02-21T16:00:28-08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-02-21T16:00:28-08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2025-02-21T16:00:28-08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/world/</loc>
-    <lastmod>2025-02-21T15:38:54-08:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/categories/development/</loc>
     <lastmod>2025-02-21T16:00:28-08:00</lastmod>
   </url><url>
@@ -39,6 +21,15 @@
     <lastmod>2025-02-21T16:00:28-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/nixdarwin-on-macos/</loc>
+    <lastmod>2025-02-21T16:00:28-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-02-21T16:00:28-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-02-21T16:00:28-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2025-02-21T16:00:28-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/blogging/</loc>

@@ -20,6 +20,10 @@ Emacs is a powerful application (to call it a text editor is a humorous understa
 
 For me, this has made the process of writing much more joyful. Between the spelling and grammar checking capability, the best-in-class AI integration (if you want them), dictionary and thesaurus capacity, and publishing... well I can't fathom writing anywhere else these days.
 
+The short recording below demonstrates how quick it is:
+
+{{< youtube biGsd4H7vwc >}}
+
 
 ## Overview {#overview}
 
@@ -141,7 +145,7 @@ We will do two things: (1) Specify the org-directory and (2) create an org captu
 ;; Blog capture template
 (after! org
   (setq org-capture-templates
-        '(("b" "Blog post" plain
+       ("b" "Blog post" plain
            (file (lambda ()
                    (let* ((title (read-string "Post title: "))
                           (slug (replace-regexp-in-string
@@ -151,8 +155,9 @@ We will do two things: (1) Specify the org-directory and (2) create an org captu
                                             title))))
                           (filename (format "~/Documents/Areas/Blog/posts/%s.org"
                                             slug)))
+                     (set-register ?t title)  ; Store the title in register t
                      filename)))
-           ,(concat "#+TITLE: %^{Post title}\n"
+           ,(concat "#+TITLE: %(get-register ?t)\n"  ; Use Lisp evaluation to get the title
                     "#+DATE: %<%Y-%m-%d %H:%M:%S %z>>\n"
                     "#+HUGO_DRAFT: true\n"
                     "#+HUGO_CATEGORIES: %^{Categories}\n"
