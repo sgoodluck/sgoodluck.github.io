@@ -166,12 +166,10 @@ This is not an easy burden and even in writing this, I risk my own reputation an
 
 ## Notes {#notes}
 
-In this formulation, we should claim the right to suppress them if necessary even by force; for it may easily turn out that they are not prepared to meet us on the level of rational argument, but begin by denouncing all argument; they may forbid their followers to listen to rational argument, because it is deceptive, and teach them to answer arguments by the use of their fists or pistols."
-
 [^fn:1]: There is nothing inherently wrong with boycotting a person or product that you have a problem with, the issue I describe only manifests when you choose to levy harsh judgement on those who don't immediately join your boycott. It is the classic "You must be an evil person because you aren't also Vegan" mentality that I take issue with, not veganism
 [^fn:2]: The holocaust is the most commonly cited example
 [^fn:3]: I'm using "violence" broadly here to capture "intent to harm"
 [^fn:4]: Rejecting the work of an individual because of who they are is an [association fallacy](https://en.wikipedia.org/wiki/Association_fallacy)
-[^fn:5]: Karl Popper's thesis does make one important distinction here which is that we must be intolerant toward intolerance itself, otherwise the tolerant society will be undone. Popper argued that in order to maintain a tolerant society, that society must paradoxically be intolerant of intolerance. Here's the crucial passage from Volume 1, Chapter 7, Note 4: "Less well known is the paradox of tolerance: Unlimited tolerance must lead to the disappearance of tolerance. If we extend unlimited tolerance even to those who are intolerant, if we are not prepared to defend a tolerant society against the onslaught of the intolerant, then the tolerant will be destroyed, and tolerance with them.
+[^fn:5]: Karl Popper's thesis does make one important distinction here which is that we must be intolerant toward intolerance itself, otherwise the tolerant society will be undone. Popper argued that in order to maintain a tolerant society, that society must paradoxically be intolerant of intolerance. Here's the crucial passage from Volume 1, Chapter 7, Note 4: "Less well known is the paradox of tolerance: Unlimited tolerance must lead to the disappearance of tolerance. If we extend unlimited tolerance even to those who are intolerant, if we are not prepared to defend a tolerant society against the onslaught of the intolerant, then the tolerant will be destroyed, and tolerance with them."
 [^fn:6]: [Golden calf](https://en.wikipedia.org/wiki/Golden_calf)
 [^fn:7]: I'm pretty sure this is a line from Rings of Power, but I can't recall specifically
