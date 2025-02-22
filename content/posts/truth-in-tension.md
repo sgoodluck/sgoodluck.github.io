@@ -40,9 +40,9 @@ On the surface this societal evolution seems like it would be good, yet the worl
 
 Quite simply, **this reverence for empathy and our desire to protect different experiences overstepped its bounds**.
 
-We shifted from a society that welcomed and protected the individual to one that violently oppresses and rejects difference. This is commonly referred to as "cancel culture" and is borne of the delusional perspective that the best way to protect a certain point of view is to eliminate others from existence. This modality of thought does not have a good track record in any culture at any point in history; it is precarious ground upon which to stand.
+We shifted from a society that welcomed and protected the individual to one that violently oppresses and rejects difference. This is commonly referred to as "cancel culture"[^fn:1] and is borne of the delusional perspective that the best way to protect a certain point of view is to eliminate others from existence. This modality of thought does not have a good track record in any culture at any point in history; it is precarious ground upon which to stand.
 
-Yet, we have gone from "let's hear out this group's unique and different perspective" to "if someone else has a different point of view, we should eliminate them from society" (i.e. cancel them). A healthy, thriving, cogni-diverse society this does not make. Historically it leads us to violence and crimes that put our species to shame[^fn:1].
+Yet, we have gone from "let's hear out this group's unique and different perspective" to "if someone else has a different point of view, we should eliminate them from society" (i.e. cancel them). A healthy, thriving, cogni-diverse society this does not make. Historically it leads us to violence and crimes that put our species to shame[^fn:2].
 
 
 ### Hate has no political party {#hate-has-no-political-party}
@@ -54,7 +54,7 @@ This "empathy-blindness" is not relegated to one political party. Both the "left
 
 Perhaps most disconcerting about these extreme groups is that they imprison those within them by ostracizing anyone who does not conform; indeed their power centers are often governed by those that preach the loudest and most strongly reject dissent within the group.
 
-The damages range from the minor rejection of individuals (lunch table rejection) to outright violence[^fn:2] against them through physical or financial means[^fn:3].
+The damages range from the minor rejection of individuals (lunch table rejection) to outright violence[^fn:3] against them through physical or financial means[^fn:4].
 
 As group power coalesces around a specific dogma, those trapped within it must choose to conform or face retribution; they are also rewarded for enforcing conformity.
 
@@ -71,13 +71,13 @@ How do we fix this? I believe the answer requires that we each (and hence as a s
 
     The active, uncompromising defense of diversity of thought.
 
-    We must fight to protect everyone's right to express and explore different ideas, while opposing attempts to silence or "cancel" perspectives we disagree with.
+    We must fight to protect everyone's right to express and explore different ideas, while opposing attempts to silence or "cancel" perspectives we disagree with[^fn:5].
 
 2.  **Critical Rationalism**
 
     The commitment that all ideas, no matter how holy or unsavory, are subject to logical scrutiny and debate.
 
-    We must welcome criticism and test beliefs through evidence and reason and be willing to modify our views when faced with compelling arguments. We cannot afford golden cows[^fn:4], no matter how precious.
+    We must welcome criticism and test beliefs through evidence and reason and be willing to modify our views when faced with compelling arguments. We cannot afford golden cows[^fn:6], no matter how precious.
 
 3.  **Human Grace**
 
@@ -123,7 +123,7 @@ My purpose in sharing this essay is a reflection of that same belief.
 
 You can and should support people you disagree with because systematic oppression of different perspectives is the principal sin for those of us who claim Freedom as an ethic -- that means for ANY American or proponent of Democracy.
 
-This is not an easy burden and even in writing this, I risk my own reputation and future career opportunities. However, **it is better to die with a whole heart than to suffer with one broken by cowardice**[^fn:5].
+This is not an easy burden and even in writing this, I risk my own reputation and future career opportunities. However, **it is better to die with a whole heart than to suffer with one broken by cowardice**[^fn:7].
 
 
 ## Quotes worth pondering {#quotes-worth-pondering}
@@ -163,8 +163,15 @@ This is not an easy burden and even in writing this, I risk my own reputation an
 
 -   [The Federalist Papers](https://guides.loc.gov/federalist-papers/text-1-10#s-lg-box-wrapper-25493264), Alexander Hamilton (1787)
 
-[^fn:1]: The holocaust is the most commonly cited example
-[^fn:2]: I'm using "violence" broadly here to capture "intent to harm"
-[^fn:3]: Rejecting the work of an individual because of who they are is an [association fallacy](https://en.wikipedia.org/wiki/Association_fallacy)
-[^fn:4]: [Golden calf](https://en.wikipedia.org/wiki/Golden_calf)
-[^fn:5]: I'm pretty sure this is a line from Rings of Power, but I can't recall specifically
+
+## Notes {#notes}
+
+In this formulation, we should claim the right to suppress them if necessary even by force; for it may easily turn out that they are not prepared to meet us on the level of rational argument, but begin by denouncing all argument; they may forbid their followers to listen to rational argument, because it is deceptive, and teach them to answer arguments by the use of their fists or pistols."
+
+[^fn:1]: There is nothing inherently wrong with boycotting a person or product that you have a problem with, the issue I describe only manifests when you choose to levy harsh judgement on those who don't immediately join your boycott. It is the classic "You must be an evil person because you aren't also Vegan" mentality that I take issue with, not veganism
+[^fn:2]: The holocaust is the most commonly cited example
+[^fn:3]: I'm using "violence" broadly here to capture "intent to harm"
+[^fn:4]: Rejecting the work of an individual because of who they are is an [association fallacy](https://en.wikipedia.org/wiki/Association_fallacy)
+[^fn:5]: Karl Popper's thesis does make one important distinction here which is that we must be intolerant toward intolerance itself, otherwise the tolerant society will be undone. Popper argued that in order to maintain a tolerant society, that society must paradoxically be intolerant of intolerance. Here's the crucial passage from Volume 1, Chapter 7, Note 4: "Less well known is the paradox of tolerance: Unlimited tolerance must lead to the disappearance of tolerance. If we extend unlimited tolerance even to those who are intolerant, if we are not prepared to defend a tolerant society against the onslaught of the intolerant, then the tolerant will be destroyed, and tolerance with them.
+[^fn:6]: [Golden calf](https://en.wikipedia.org/wiki/Golden_calf)
+[^fn:7]: I'm pretty sure this is a line from Rings of Power, but I can't recall specifically
