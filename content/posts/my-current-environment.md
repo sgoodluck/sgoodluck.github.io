@@ -55,6 +55,11 @@ In short, every other editor, not matter how configured pails in comparison to t
 The truth is, even the most well-built setup in something like neovim only ever approaches the functionality of emacs. Neovim is not an IDE and most "riced" neovim setups do their best (admirably) to make it into one. For me, neovim is a lovely text editor. Emacs is more like an entire operating system. I've used both extensively for years and I will continue to use both; Emacs is my go-to system for authoring files (code or other writing) but neovim is my fast "let me edit this file right here right now" editor of choice. I don't see why I would ever change that. I'll write a full blog post about Emacs compared neovim and other editors one of these days.
 
 
+### Window Management: Amethyst {#window-management-amethyst}
+
+I really LOVE `yabai`, but have been too busy to bother configuring it. `Amethyst` works right of the box and paired with `Karabiner` gives me 75% of what I would look for out of Yabai. I'll probably still configure Yabai again one day (for perfect parity with i3 on my thinkpad). For now it is fine though
+
+
 ### Browser: Zen {#browser-zen}
 
 Really enjoyable Firefox derived browser. Beautiful and clean. Ladybird also looks interesting but isn't quite ready yet.
