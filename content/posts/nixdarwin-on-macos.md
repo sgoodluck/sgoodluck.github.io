@@ -3,8 +3,8 @@ title = "Nix-Darwin on MacOS"
 author = ["Seth Martin"]
 date = 2025-02-21T15:57:00-08:00
 tags = ["nix-darwin", "macos", "homebrew", "system-management"]
-categories = ["Development", "Efficiency"]
-draft = true
+categories = ["Development", "Nix"]
+draft = false
 +++
 
 I'm going to show you how to setup Nix-Darwin on your Mac to manage your entire computer, its Homebrew packages and more. By the end of this tutorial, you will have your Mac as close to declaratively setup as possible. Let's get started, shall we?
