@@ -6,7 +6,7 @@
     <description>Recent content in Categories on The Good Code Guy</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2025 16:30:56 -0800</lastBuildDate>
+    <lastBuildDate>Fri, 21 Feb 2025 17:31:15 -0800</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Development</title>
@@ -16,10 +16,10 @@
       <description></description>
     </item>
     <item>
-      <title>Nix</title>
-      <link>http://localhost:1313/categories/nix/</link>
+      <title>Efficiency</title>
+      <link>http://localhost:1313/categories/efficiency/</link>
       <pubDate>Fri, 21 Feb 2025 15:57:00 -0800</pubDate>
-      <guid>http://localhost:1313/categories/nix/</guid>
+      <guid>http://localhost:1313/categories/efficiency/</guid>
       <description></description>
     </item>
     <item>

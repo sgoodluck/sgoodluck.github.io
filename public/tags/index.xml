@@ -6,7 +6,7 @@
     <description>Recent content in Tags on The Good Code Guy</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2025 16:30:56 -0800</lastBuildDate>
+    <lastBuildDate>Fri, 21 Feb 2025 17:31:15 -0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Homebrew</title>
@@ -27,6 +27,13 @@
       <link>http://localhost:1313/tags/nix-darwin/</link>
       <pubDate>Fri, 21 Feb 2025 15:57:00 -0800</pubDate>
       <guid>http://localhost:1313/tags/nix-darwin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>System-Management</title>
+      <link>http://localhost:1313/tags/system-management/</link>
+      <pubDate>Fri, 21 Feb 2025 15:57:00 -0800</pubDate>
+      <guid>http://localhost:1313/tags/system-management/</guid>
       <description></description>
     </item>
     <item>

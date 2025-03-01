@@ -48,10 +48,739 @@
         	       
 		           <a href="/tags/homebrew">homebrew</a>
         	       
+		           <a href="/tags/system-management">system-management</a>
+        	       
 
 			<div>
-				<h2 id="a-post">A post</h2>
-<p>I want this post to be a walkthrough of my entire Nix-Darwin setup that allows someone to migrate their world from normal mac to Nix world like that</p>
+				<p>I&rsquo;m going to show you how to setup Nix-Darwin on your Mac to manage your entire computer, its Homebrew packages and more. By the end of this tutorial, you will have your Mac as close to declaratively setup as possible. Let&rsquo;s get started, shall we?</p>
+<h2 id="background">Background</h2>
+<h3 id="what-is-nix-darwin">What is Nix-Darwin?</h3>
+<p>Nix is a declarative (explicitly written) package-manager and system-manager. It can also be a standalone operating system that rivals and perhaps even exceeds Arch in its level of capablity and polish (yes, I have had a fully homebaked version of Arch from scratch and it was awesome).</p>
+<p>Nix-Darwin is a package-management system for MacOS (think Homebrew) that uses the same syntax as Nix - the operating system. Nix is an entire world unto itself.</p>
+<h3 id="why-would-i-want-that">Why would I want that?</h3>
+<p>Instead of depending on some behind the scenes magic to install things on your computer, you open a text-buffer in your favorite editor and have a written list of &ldquo;packages&rdquo;. If you want to install a package, you just add the package to the list, save the file, and run a nix-reload command and viola that package is installed.</p>
+<p>We can even fully manage our Homebrew packages inside of our nix configuration file (meaning you always know what brew has installed).</p>
+<p>Want a package and everything to do with it removed from your computer? Open the text file, delete that package from your list, save the file, and nix-reload.</p>
+<p>Did something break on your system because of an update and you can&rsquo;t spend time fixing it right now? You can run a nix-rollback command and your system reverts to the previous state without any fuss.</p>
+<p>Need to setup a new computer? Just clone down the configuration file and run nix-refresh and your new computer is in parity with your old computer down to the user list and personal settings.</p>
+<p>Run both mac and linux? Share the bulk of your configuration and maintain git doped parity between computers, even across different operating systems.</p>
+<p>If the above didn&rsquo;t wet your pallet, I&rsquo;m not sure what would. You should probably leave because we are diving right in.</p>
+<h2 id="overview">Overview</h2>
+<p>The high-level workflow we will going for looks like this:</p>
+<ol>
+<li>Download nix-darwin</li>
+<li>Open the configuration file, make some updates, and save it</li>
+<li>Run a nix-reload</li>
+<li>Enjoy your declarative life</li>
+</ol>
+<p>This is going to be the best thing you&rsquo;ve done for your development environment in awhile. Let&rsquo;s get started</p>
+<h2 id="setup">Setup</h2>
+<p>We are going to setup your computer somewhat similarly to mine. I&rsquo;ll explain the choices I make along the way and try to clarify where you can change things out to your own taste</p>
+<h3 id="installing-nix-darwin">Installing Nix Darwin</h3>
+<p>The most robust means to install Nix Darwin at the time of writing is by the Determinate Systems installer (this is even reflected in the Nix Darwin readme). You can also manually install nix, but it makes uninstalling it a bit more of a process. The determinate system installer handles all of the setup and keeps a record of what it did so that, should you opt out of nix in the future, you have a single uninstall command to get rid of everything.</p>
+<p>Run the following command in your shell:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl --proto <span style="color:#e6db74">&#39;=https&#39;</span> --tlsv1.2 -sSf -L https://install.determinate.systems/nix | <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  sh -s -- install --determinate
+</span></span></code></pre></div><p>This command installs <a href="https://github.com/DeterminateSystems/nix-installer?tab=readme-ov-file#determinate-nix-installer">Determinate Systems - Nix Installer</a>&quot; on your Macbook. Once complete, you now have nix installed!</p>
+<h4 id="verify-nix-installation">Verify Nix Installation</h4>
+<p>One very cool and useful more often than you might realize capability of the nix is to run transient nix shells with different software installed without installing that software on your machine.</p>
+<p>Reload your terminal and run this command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nix-shell -p asciiquarium --run asciiquarium
+</span></span></code></pre></div><p>This will create a &ldquo;temporary shell&rdquo; with &ldquo;asciiquarium&rdquo; installed and runs it. Enjoy the fishes. Ctrl+C to terminate it &ndash; now if you just try to run <code>asciiquarium</code> you&rsquo;ll get a command not found error.</p>
+<p>If this worked for you, congratulations you have nix installed on your computer!</p>
+<h4 id="disclaimer">Disclaimer:</h4>
+<p>Nix-darwin creates a separate &ldquo;nix&rdquo; user and disk structure on your computer to maintain a pure, isolated environment for nix packages. This is why nix-darwin is somewhat more involved and why determinate systems is a good choice as it makes the uninstallation process much faster than a manual and tedious process.</p>
+<p>It also does a better job of ensuring your nix setup is as mac friendly as possible and ready to go with some extra features. Do your own research, but from my experience using both, the determinate installer is great.</p>
+<h4 id="disclaimer">Disclaimer:</h4>
+<p>The files below are comment heavy because I assume someone following this may not be fully versed in Nix.</p>
+<h3 id="creating-your-nix-structure">Creating your nix structure</h3>
+<p>We are going to create a nix directory that contains all of our nix-stuff. This is your homebase, where you will manage everything on your computer from here on out including installed applications, brew packages, dotfiles, and more.</p>
+<p>Let&rsquo;s create the following directory structure in our computer:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nix
+</span></span><span style="display:flex;"><span>├── README.md
+</span></span><span style="display:flex;"><span>├── darwin
+</span></span><span style="display:flex;"><span>│   ├── default.nix
+</span></span><span style="display:flex;"><span>│   ├── packages.nix
+</span></span><span style="display:flex;"><span>│   ├── services.nix
+</span></span><span style="display:flex;"><span>│   └── system.nix
+</span></span><span style="display:flex;"><span>├── dotfiles
+</span></span><span style="display:flex;"><span>├── flake.nix
+</span></span><span style="display:flex;"><span>├── home.nix
+</span></span><span style="display:flex;"><span>└── personal.nix
+</span></span></code></pre></div><p>If you are really feeling lazy, here&rsquo;s a shell command for you:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p ~/nix/darwin ~/nix/dotfiles <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>touch ~/nix/README.md <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      ~/nix/darwin/default.nix <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      ~/nix/darwin/packages.nix <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      ~/nix/darwin/services.nix <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      ~/nix/darwin/system.nix <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      ~/nix/flake.nix <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      ~/nix/home.nix <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      ~/nix/personal.nix
+</span></span></code></pre></div><p>For the sake of best practices, go ahead perform a <code>git init</code> here and sync the repo up to your github. This is a good practice in general, and when you pair git with nixos, you have a truly badass backed up declarative system.</p>
+<p>Great, we are going to populate all of these files with some basic settings to get you inspired and educated on the power of nix. Let&rsquo;s go!</p>
+<h3 id="setting-it-up">Setting it up</h3>
+<p>Now that we have our directory structure in place, let&rsquo;s fill in these files to create a functional Nix-Darwin configuration. Each file serves a specific purpose in our setup:</p>
+<h4 id="personal-dot-nix">personal.nix</h4>
+<p>This file contains your personal identity information and preferences that remain consistent across systems. It&rsquo;s a central place to store information about yourself that other configuration files will reference.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nix" data-lang="nix"><span style="display:flex;"><span><span style="color:#75715e"># personal.nix - User-specific personal preferences</span>
+</span></span><span style="display:flex;"><span>{ pkgs<span style="color:#f92672">,</span> lib<span style="color:#f92672">,</span> <span style="color:#f92672">...</span> }:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Personal identity information</span>
+</span></span><span style="display:flex;"><span>  personal <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;yourname&#34;</span>;  <span style="color:#75715e"># Replace with your username</span>
+</span></span><span style="display:flex;"><span>    fullName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Your Name&#34;</span>;  <span style="color:#75715e"># Replace with your name</span>
+</span></span><span style="display:flex;"><span>    email <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your.email@example.com&#34;</span>;  <span style="color:#75715e"># Replace with your email</span>
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Universal preferences that would apply across systems</span>
+</span></span><span style="display:flex;"><span>  preferences <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Editor preferences</span>
+</span></span><span style="display:flex;"><span>    editor <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      default <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;nvim&#34;</span>;  <span style="color:#75715e"># Your preferred default editor</span>
+</span></span><span style="display:flex;"><span>      gui <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;emacs&#34;</span>;  <span style="color:#75715e"># Your preferred GUI editor</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="flake-dot-nix">flake.nix</h4>
+<p>This is the entry point for your Nix configuration. Flakes are a relatively new feature in Nix that provide reproducible builds and a standard structure for Nix projects. The flake.nix file defines inputs (dependencies) and outputs (configurations).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nix" data-lang="nix"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># A brief description of this configuration</span>
+</span></span><span style="display:flex;"><span>  description <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Your Nix-Darwin Configuration&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># INPUTS: External dependencies needed for your configuration</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># These are like package imports or library dependencies in other languages</span>
+</span></span><span style="display:flex;"><span>  inputs <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># The core Nix packages repository - using the darwin-specific branch</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># This is where all the software packages come from</span>
+</span></span><span style="display:flex;"><span>    nixpkgs<span style="color:#f92672">.</span>url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;github:NixOS/nixpkgs/nixpkgs-24.11-darwin&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># nix-darwin provides macOS-specific functionality for Nix</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># It allows Nix to configure macOS settings and work with macOS features</span>
+</span></span><span style="display:flex;"><span>    nix-darwin <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;github:LnL7/nix-darwin/nix-darwin-24.11&#34;</span>;
+</span></span><span style="display:flex;"><span>      inputs<span style="color:#f92672">.</span>nixpkgs<span style="color:#f92672">.</span>follows <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;nixpkgs&#34;</span>; <span style="color:#75715e"># Use the same nixpkgs as above</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># home-manager manages user-specific configuration (dotfiles, programs)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># This is like having a separate configuration for your user account</span>
+</span></span><span style="display:flex;"><span>    home-manager <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;github:nix-community/home-manager/release-24.11&#34;</span>;
+</span></span><span style="display:flex;"><span>      inputs<span style="color:#f92672">.</span>nixpkgs<span style="color:#f92672">.</span>follows <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;nixpkgs&#34;</span>; <span style="color:#75715e"># Use the same nixpkgs as above</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># nix-homebrew allows us to manage Homebrew via Nix</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># This gives us the best of both worlds - Nix&#39;s reproducibility with Homebrew&#39;s macOS software</span>
+</span></span><span style="display:flex;"><span>    nix-homebrew<span style="color:#f92672">.</span>url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;github:zhaofengli-wip/nix-homebrew&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Utilities for handling macOS applications</span>
+</span></span><span style="display:flex;"><span>    mac-app-util<span style="color:#f92672">.</span>url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;github:hraban/mac-app-util&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Homebrew repositories (marked as flake = false because they aren&#39;t Nix flakes)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># These are the sources for Homebrew packages</span>
+</span></span><span style="display:flex;"><span>    homebrew-core <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;github:homebrew/homebrew-core&#34;</span>;
+</span></span><span style="display:flex;"><span>      flake <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>; <span style="color:#75715e"># Not a Nix flake, just a regular Git repository</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    homebrew-cask <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;github:homebrew/homebrew-cask&#34;</span>;
+</span></span><span style="display:flex;"><span>      flake <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>; <span style="color:#75715e"># Casks are GUI applications for macOS</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    homebrew-bundle <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;github:homebrew/homebrew-bundle&#34;</span>;
+</span></span><span style="display:flex;"><span>      flake <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>; <span style="color:#75715e"># Bundle functionality for Homebrew</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># OUTPUTS: What this flake provides - in our case, a macOS system configuration</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># This is where we use the inputs above to create our system</span>
+</span></span><span style="display:flex;"><span>  outputs <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Use inputs@ to capture all inputs and then destructure specific ones we need</span>
+</span></span><span style="display:flex;"><span>    inputs<span style="color:#f92672">@</span>{
+</span></span><span style="display:flex;"><span>      self<span style="color:#f92672">,</span> <span style="color:#75715e"># Reference to this flake</span>
+</span></span><span style="display:flex;"><span>      nix-darwin<span style="color:#f92672">,</span> <span style="color:#75715e"># The darwin configuration system</span>
+</span></span><span style="display:flex;"><span>      nixpkgs<span style="color:#f92672">,</span> <span style="color:#75715e"># All the packages</span>
+</span></span><span style="display:flex;"><span>      home-manager<span style="color:#f92672">,</span> <span style="color:#75715e"># User environment manager</span>
+</span></span><span style="display:flex;"><span>      nix-homebrew<span style="color:#f92672">,</span> <span style="color:#75715e"># Homebrew integration</span>
+</span></span><span style="display:flex;"><span>      mac-app-util<span style="color:#f92672">,</span> <span style="color:#75715e"># macOS application utilities</span>
+</span></span><span style="display:flex;"><span>      homebrew-core<span style="color:#f92672">,</span> homebrew-cask<span style="color:#f92672">,</span> homebrew-bundle<span style="color:#f92672">,</span> <span style="color:#75715e"># Homebrew repositories</span>
+</span></span><span style="display:flex;"><span>    }:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Specify the system architecture</span>
+</span></span><span style="display:flex;"><span>      system <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;aarch64-darwin&#34;</span>;  <span style="color:#75715e"># For Apple Silicon Macs, use &#34;x86_64-darwin&#34; for Intel</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Import our personal configuration file with user-specific settings</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># This passes needed Nix tools to the personal.nix file</span>
+</span></span><span style="display:flex;"><span>      personalConfig <span style="color:#f92672">=</span> <span style="color:#f92672">import</span> <span style="color:#e6db74">./personal.nix</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">inherit</span> (nixpkgs) lib; <span style="color:#75715e"># Nix helper functions</span>
+</span></span><span style="display:flex;"><span>        pkgs <span style="color:#f92672">=</span> nixpkgs<span style="color:#f92672">.</span>legacyPackages<span style="color:#f92672">.</span><span style="color:#e6db74">${</span>system<span style="color:#e6db74">}</span>; <span style="color:#75715e"># All available packages</span>
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Create a machine name using the username from personal config</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># This makes it easy to identify which machine configuration is which</span>
+</span></span><span style="display:flex;"><span>      machineName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>personalConfig<span style="color:#f92672">.</span>personal<span style="color:#f92672">.</span>username<span style="color:#e6db74">}</span><span style="color:#e6db74">-mac&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Define a Darwin (macOS) system configuration with our username</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># This is the main output of our flake - a complete system configuration</span>
+</span></span><span style="display:flex;"><span>      darwinConfigurations<span style="color:#f92672">.</span><span style="color:#e6db74">${</span>machineName<span style="color:#e6db74">}</span> <span style="color:#f92672">=</span> nix-darwin<span style="color:#f92672">.</span>lib<span style="color:#f92672">.</span>darwinSystem {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">inherit</span> system; <span style="color:#75715e"># Use the system architecture we defined above</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Modules are like components or plugins that make up our configuration</span>
+</span></span><span style="display:flex;"><span>        modules <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e"># Core system configuration directory</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">./darwin</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e"># macOS application utilities module</span>
+</span></span><span style="display:flex;"><span>          mac-app-util<span style="color:#f92672">.</span>darwinModules<span style="color:#f92672">.</span>default
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e"># Homebrew integration module</span>
+</span></span><span style="display:flex;"><span>          nix-homebrew<span style="color:#f92672">.</span>darwinModules<span style="color:#f92672">.</span>nix-homebrew
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e"># Inline module for configuring Homebrew</span>
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            nix-homebrew <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>              enable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>; <span style="color:#75715e"># Turn on Homebrew management</span>
+</span></span><span style="display:flex;"><span>              enableRosetta <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>; <span style="color:#75715e"># Enable Rosetta for Intel apps on Apple Silicon</span>
+</span></span><span style="display:flex;"><span>              user <span style="color:#f92672">=</span> personalConfig<span style="color:#f92672">.</span>personal<span style="color:#f92672">.</span>username; <span style="color:#75715e"># User that will own Homebrew</span>
+</span></span><span style="display:flex;"><span>              mutableTaps <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>; <span style="color:#75715e"># Make Homebrew taps immutable (managed by Nix)</span>
+</span></span><span style="display:flex;"><span>              autoMigrate <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>; <span style="color:#75715e"># Auto-migrate existing Homebrew setup</span>
+</span></span><span style="display:flex;"><span>              taps <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e"># Connect Homebrew taps to the Git repositories we imported</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;homebrew/homebrew-core&#34;</span> <span style="color:#f92672">=</span> homebrew-core;
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;homebrew/homebrew-bundle&#34;</span> <span style="color:#f92672">=</span> homebrew-bundle;
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;homebrew/homebrew-cask&#34;</span> <span style="color:#f92672">=</span> homebrew-cask;
+</span></span><span style="display:flex;"><span>              };
+</span></span><span style="display:flex;"><span>            };
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e"># Inline module for user setup and home-manager integration</span>
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Make our personal config available to all modules as &#39;personal&#39;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># This lets other modules access our user preferences</span>
+</span></span><span style="display:flex;"><span>            _module<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>personal <span style="color:#f92672">=</span> personalConfig;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Configure the user&#39;s home directory</span>
+</span></span><span style="display:flex;"><span>            users<span style="color:#f92672">.</span>users<span style="color:#f92672">.</span><span style="color:#e6db74">${</span>personalConfig<span style="color:#f92672">.</span>personal<span style="color:#f92672">.</span>username<span style="color:#e6db74">}</span><span style="color:#f92672">.</span>home <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/Users/</span><span style="color:#e6db74">${</span>personalConfig<span style="color:#f92672">.</span>personal<span style="color:#f92672">.</span>username<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># home-manager configuration for managing user environment</span>
+</span></span><span style="display:flex;"><span>            home-manager <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>              useGlobalPkgs <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>; <span style="color:#75715e"># Use the global nixpkgs instead of a separate one</span>
+</span></span><span style="display:flex;"><span>              useUserPackages <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>; <span style="color:#75715e"># Install user packages to user profile</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#75715e"># Configure home-manager for our user</span>
+</span></span><span style="display:flex;"><span>              users<span style="color:#f92672">.</span><span style="color:#e6db74">${</span>personalConfig<span style="color:#f92672">.</span>personal<span style="color:#f92672">.</span>username<span style="color:#e6db74">}</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>                { pkgs<span style="color:#f92672">,</span> <span style="color:#f92672">...</span> }:
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">import</span> <span style="color:#e6db74">./home.nix</span> {
+</span></span><span style="display:flex;"><span>                  <span style="color:#66d9ef">inherit</span> pkgs; <span style="color:#75715e"># Pass the packages set</span>
+</span></span><span style="display:flex;"><span>                  lib <span style="color:#f92672">=</span> nixpkgs<span style="color:#f92672">.</span>lib; <span style="color:#75715e"># Pass Nix helper functions</span>
+</span></span><span style="display:flex;"><span>                  personal <span style="color:#f92672">=</span> personalConfig; <span style="color:#75715e"># Pass our personal configuration</span>
+</span></span><span style="display:flex;"><span>                  config <span style="color:#f92672">=</span> { }; <span style="color:#75715e"># Empty config - could be used for overrides</span>
+</span></span><span style="display:flex;"><span>                };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>              <span style="color:#75715e"># Make personal config available within home-manager modules</span>
+</span></span><span style="display:flex;"><span>              extraSpecialArgs <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>                personal <span style="color:#f92672">=</span> personalConfig;
+</span></span><span style="display:flex;"><span>              };
+</span></span><span style="display:flex;"><span>            };
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e"># Import the home-manager darwin module</span>
+</span></span><span style="display:flex;"><span>          home-manager<span style="color:#f92672">.</span>darwinModules<span style="color:#f92672">.</span>home-manager
+</span></span><span style="display:flex;"><span>        ];
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="home-dot-nix">home.nix</h4>
+<p>This file configures your user environment using home-manager, which is like Nix for your home directory. It manages your dotfiles, user programs, and shell configuration.</p>
+<ul>
+<li>
+<p>Concerning Dotfiles</p>
+<p>It is worth emphasizing here that from now on, when you want to update a dotfile, you do so from your <code>~/nix/dotfiles</code> directory. Now is a good time to copy any dotfiles you already have into this directory and specify them as below.</p>
+<p>What happens with dotfiles here is that the actual dotfile location gets symlinked to your nix dotfile location. This gives you:</p>
+<ul>
+<li>Fully declared dotfiles managed via nix</li>
+<li>Dotfiles backed up via git and github</li>
+</ul>
+<p>Remember, changes to these locations won&rsquo;t take affect until you run the nix-rebuild command!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nix" data-lang="nix"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  pkgs<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>  lib<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>  config<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>  personal<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>}:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Get the directory containing this file</span>
+</span></span><span style="display:flex;"><span>  configDir <span style="color:#f92672">=</span> builtins<span style="color:#f92672">.</span>toString <span style="color:#e6db74">./.</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  home<span style="color:#f92672">.</span>stateVersion <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;24.11&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># SPECIFY DOT FILES - these are symlinked to your home directory</span>
+</span></span><span style="display:flex;"><span>  home<span style="color:#f92672">.</span>file <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;.config/nvim/init.lua&#34;</span><span style="color:#f92672">.</span>source <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>configDir<span style="color:#e6db74">}</span><span style="color:#e6db74">/dotfiles/nvim/init.lua&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Add more dotfiles as needed</span>
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  programs <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    home-manager<span style="color:#f92672">.</span>enable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># CONFIGURE GIT</span>
+</span></span><span style="display:flex;"><span>    git <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      enable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>      userName <span style="color:#f92672">=</span> personal<span style="color:#f92672">.</span>personal<span style="color:#f92672">.</span>fullName;
+</span></span><span style="display:flex;"><span>      userEmail <span style="color:#f92672">=</span> personal<span style="color:#f92672">.</span>personal<span style="color:#f92672">.</span>email;
+</span></span><span style="display:flex;"><span>      extraConfig <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        init<span style="color:#f92672">.</span>defaultBranch <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;main&#34;</span>;
+</span></span><span style="display:flex;"><span>        pull<span style="color:#f92672">.</span>rebase <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        core<span style="color:#f92672">.</span>editor <span style="color:#f92672">=</span> personal<span style="color:#f92672">.</span>preferences<span style="color:#f92672">.</span>editor<span style="color:#f92672">.</span>default;
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># CONFIGURE TERMINAL</span>
+</span></span><span style="display:flex;"><span>    alacritty <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      enable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>      settings <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        window <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>          decorations <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;none&#34;</span>;
+</span></span><span style="display:flex;"><span>          padding <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>            y <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>          };
+</span></span><span style="display:flex;"><span>          opacity <span style="color:#f92672">=</span> <span style="color:#ae81ff">.95</span>;
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># CONFIGURE ZSH</span>
+</span></span><span style="display:flex;"><span>    zsh <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      enable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>      enableCompletion <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>      autosuggestion<span style="color:#f92672">.</span>enable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      sessionVariables <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        EDITOR <span style="color:#f92672">=</span> personal<span style="color:#f92672">.</span>preferences<span style="color:#f92672">.</span>editor<span style="color:#f92672">.</span>default;
+</span></span><span style="display:flex;"><span>        VISUAL <span style="color:#f92672">=</span> personal<span style="color:#f92672">.</span>preferences<span style="color:#f92672">.</span>editor<span style="color:#f92672">.</span>gui;
+</span></span><span style="display:flex;"><span>        HOMEBREW_BIN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/homebrew/bin&#34;</span>;
+</span></span><span style="display:flex;"><span>        HOMEBREW_SBIN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/homebrew/sbin&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Assembled PATH with all components</span>
+</span></span><span style="display:flex;"><span>        PATH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;$HOMEBREW_BIN:$HOMEBREW_SBIN:$PATH&#34;</span>;
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      shellAliases <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Helpful alias to rebuild your Nix configuration</span>
+</span></span><span style="display:flex;"><span>        nxr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;darwin-rebuild switch --flake ~/nix#</span><span style="color:#e6db74">${</span>personal<span style="color:#f92672">.</span>personal<span style="color:#f92672">.</span>username<span style="color:#e6db74">}</span><span style="color:#e6db74">-mac&#34;</span>;
+</span></span><span style="display:flex;"><span>        ls <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ls --color=auto&#34;</span>;
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<h4 id="darwin-default-dot-nix">darwin/default.nix</h4>
+<p>This is the entry point for your Darwin-specific configuration. It imports all other Darwin modules to form your system configuration. You can rename these files however you want or re-organize them into whatever way makes sense to you.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nix" data-lang="nix"><span style="display:flex;"><span><span style="color:#75715e"># Main entry point for Darwin configuration - imports all other modules</span>
+</span></span><span style="display:flex;"><span>{ config<span style="color:#f92672">,</span> pkgs<span style="color:#f92672">,</span> <span style="color:#f92672">...</span> }:
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  imports <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">./system.nix</span>  <span style="color:#75715e"># System settings and fonts</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">./packages.nix</span>  <span style="color:#75715e"># All packages and Homebrew config</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">./services.nix</span>  <span style="color:#75715e"># Various services</span>
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="darwin-packages-dot-nix">darwin/packages.nix</h4>
+<p>This file defines all the system-wide packages to install using both Nix and Homebrew.If you have a multi-user setup or want some packages relegated just to your user, I recommend you check in with an AI assistant (Claude is pretty good) to reconfigure things.</p>
+<p>In short, you can also include packages using <code>home.packages = with pkgs; [ htop tmux git ];</code> in your home.nix file if you prefer packages set to just your user. I&rsquo;m a single user, so system wide is fine for me.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nix" data-lang="nix"><span style="display:flex;"><span>{ pkgs<span style="color:#f92672">,</span> <span style="color:#f92672">...</span> }:
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># SYSTEM PACKAGES</span>
+</span></span><span style="display:flex;"><span>  environment<span style="color:#f92672">.</span>systemPackages <span style="color:#f92672">=</span> <span style="color:#66d9ef">with</span> pkgs; [
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># DEVELOPMENT TOOLS</span>
+</span></span><span style="display:flex;"><span>    git  <span style="color:#75715e"># Version control system</span>
+</span></span><span style="display:flex;"><span>    curl  <span style="color:#75715e"># Data transfer tool</span>
+</span></span><span style="display:flex;"><span>    wget  <span style="color:#75715e"># File download utility</span>
+</span></span><span style="display:flex;"><span>    coreutils  <span style="color:#75715e"># GNU file, shell and text utilities</span>
+</span></span><span style="display:flex;"><span>    neovim  <span style="color:#75715e"># Text editor</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># USER TOOLS</span>
+</span></span><span style="display:flex;"><span>    alacritty  <span style="color:#75715e"># Terminal emulator</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Add more packages as needed</span>
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># HOMEBREW CONFIGURATION AND PACKAGES</span>
+</span></span><span style="display:flex;"><span>  homebrew <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    enable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    onActivation <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      cleanup <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zap&#34;</span>;  <span style="color:#75715e"># Remove anything not declared</span>
+</span></span><span style="display:flex;"><span>      autoUpdate <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;  <span style="color:#75715e"># Update formulae on activation</span>
+</span></span><span style="display:flex;"><span>      upgrade <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;  <span style="color:#75715e"># Upgrade packages on activation</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    taps <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;homebrew/homebrew-core&#34;</span>  <span style="color:#75715e"># Main package repository</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;homebrew/homebrew-cask&#34;</span>  <span style="color:#75715e"># GUI applications</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;homebrew/homebrew-bundle&#34;</span>  <span style="color:#75715e"># Brewfile support</span>
+</span></span><span style="display:flex;"><span>    ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    brews <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;ripgrep&#34;</span>  <span style="color:#75715e"># Fast text search tool</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;fd&#34;</span>  <span style="color:#75715e"># Simple, fast file finder</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;node&#34;</span>  <span style="color:#75715e"># JavaScript runtime</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Add more brew packages as needed</span>
+</span></span><span style="display:flex;"><span>    ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    casks <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;firefox&#34;</span>  <span style="color:#75715e"># Web browser</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;visual-studio-code&#34;</span>  <span style="color:#75715e"># Code editor</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Add more applications as needed</span>
+</span></span><span style="display:flex;"><span>    ];
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>
+<p>Managing Homebrew</p>
+<p>One of the most powerful aspects of this setup is the ability to manage your Homebrew packages declaratively through Nix. But you might be wondering - if we&rsquo;re using Nix, why bother with Homebrew at all?</p>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>Why Use Both Nix and Homebrew?</p>
+<p>While Nix is excellent for reproducible configurations, there are several practical reasons to maintain Homebrew integration:</p>
+<ol>
+<li>
+<p><strong><strong>Mac-Specific Applications</strong></strong>: Many macOS applications are only available through Homebrew Casks and aren&rsquo;t packaged in Nixpkgs, or are better maintained in Homebrew.</p>
+</li>
+<li>
+<p><strong><strong>GUI Application Support</strong></strong>: Homebrew Casks handle macOS GUI applications more seamlessly, including proper app registration, icon integration, and Spotlight indexing.</p>
+</li>
+<li>
+<p><strong><strong>Mac App Store Integration</strong></strong>: The `mas` CLI tool (managed via Homebrew) lets you install Mac App Store applications programmatically.</p>
+</li>
+<li>
+<p><strong><strong>Familiar Developer Experience</strong></strong>: If you&rsquo;re collaborating with other Mac developers, Homebrew provides a familiar interface they may already understand.</p>
+</li>
+<li>
+<p><strong><strong>Commercial Software</strong></strong>: Some commercial software with licensing requirements may work better through Homebrew&rsquo;s installation methods.</p>
+</li>
+<li>
+<p><strong><strong>Weird Edge Cases</strong></strong>: Some developer tooling gets really hair with nix. I&rsquo;m not sure why, but if I run into issues installing something via nix, I often nuke it and just install via brew through Nix.</p>
+</li>
+</ol>
+<p>Our setup gives us the best of both worlds - Nix&rsquo;s declarative configuration and rollback capabilities with Homebrew&rsquo;s extensive macOS support.</p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>Mac App Store Integration with MAS</p>
+<p>Let&rsquo;s update our `packages.nix` file to include Mac App Store applications using the `mas` CLI:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nix" data-lang="nix"><span style="display:flex;"><span>{ pkgs<span style="color:#f92672">,</span> <span style="color:#f92672">...</span> }:
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># SYSTEM PACKAGES</span>
+</span></span><span style="display:flex;"><span>  environment<span style="color:#f92672">.</span>systemPackages <span style="color:#f92672">=</span> <span style="color:#66d9ef">with</span> pkgs; [
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Previous packages...</span>
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># HOMEBREW CONFIGURATION AND PACKAGES</span>
+</span></span><span style="display:flex;"><span>  homebrew <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    enable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    onActivation <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      cleanup <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zap&#34;</span>;
+</span></span><span style="display:flex;"><span>      autoUpdate <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>      upgrade <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    taps <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;homebrew/homebrew-core&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;homebrew/homebrew-cask&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;homebrew/homebrew-bundle&#34;</span>
+</span></span><span style="display:flex;"><span>    ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    brews <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;ripgrep&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;fd&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;node&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;mas&#34;</span>  <span style="color:#75715e"># Mac App Store CLI</span>
+</span></span><span style="display:flex;"><span>    ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    casks <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;firefox&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;visual-studio-code&#34;</span>
+</span></span><span style="display:flex;"><span>    ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Mac App Store applications</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># The format is: &#34;Application Name&#34; = App Store ID</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># You can find the ID by searching for the app in the Mac App Store,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># clicking on it, and looking at the number in the URL or running: `mas search &lt;&lt;appname&gt;&gt;` in the terminal</span>
+</span></span><span style="display:flex;"><span>    masApps <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;Xcode&#34;</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">497799835</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;1Password&#34;</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1333542190</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;Things&#34;</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">904280696</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># Add more Mac App Store apps as needed</span>
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>With this configuration, applications from the Mac App Store will be automatically installed and managed as part of your Nix setup.</p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>Potential Issues with Nix-Only Approach</p>
+<p>While Nix is powerful, there are some challenges when using it as your only package manager on macOS:</p>
+<ol>
+<li>
+<p><strong><strong>Integration with macOS</strong></strong>: Some Nix-installed applications may not integrate as well with macOS features like Spotlight, Services menu, or file associations.</p>
+</li>
+<li>
+<p><strong><strong>Application Signing</strong></strong>: macOS security features like Gatekeeper may interact differently with Nix-installed applications compared to Homebrew or Mac App Store installations.</p>
+</li>
+<li>
+<p><strong><strong>Learning Curve</strong></strong>: The Nix language and ecosystem have a steeper learning curve compared to Homebrew&rsquo;s simple CLI commands.</p>
+</li>
+<li>
+<p><strong><strong>Binary Cache Availability</strong></strong>: Some macOS-specific packages may not be available in binary caches, requiring local compilation which can be time-consuming.</p>
+</li>
+</ol>
+<p>Our approach with nix-homebrew integration solves many of these issues while maintaining the benefits of declarative configuration.</p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>Migrating from an Existing Homebrew Setup</p>
+<p>If you&rsquo;re already using Homebrew with a collection of packages, migrating to a Nix-managed Homebrew setup is straightforward. Here&rsquo;s how to transition smoothly:</p>
+<ol>
+<li>
+<p><strong><strong>Inventory Your Current Homebrew Packages</strong></strong></p>
+<p>First, let&rsquo;s capture what you currently have installed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get a list of all formulae (CLI packages)</span>
+</span></span><span style="display:flex;"><span>brew leaves &gt; my_brew_packages.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get a list of all casks (GUI applications)</span>
+</span></span><span style="display:flex;"><span>brew list --cask &gt; my_brew_casks.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Get a list of all taps (third-party repositories)</span>
+</span></span><span style="display:flex;"><span>brew tap &gt; my_brew_taps.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># List Mac App Store applications (if mas is installed)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> command -v mas &amp;&gt; /dev/null; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>  mas list &gt; my_mas_apps.txt
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong><strong>Transfer to Your Nix Configuration</strong></strong></p>
+<p>Now add these packages to your `packages.nix` file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nix" data-lang="nix"><span style="display:flex;"><span>homebrew <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  enable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>  onActivation <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    cleanup <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zap&#34;</span>; <span style="color:#75715e"># This will remove anything not declared</span>
+</span></span><span style="display:flex;"><span>    autoUpdate <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    upgrade <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Add your existing taps</span>
+</span></span><span style="display:flex;"><span>  taps <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;homebrew/homebrew-core&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;homebrew/homebrew-cask&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;homebrew/homebrew-bundle&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Add taps from my_brew_taps.txt</span>
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Add your existing brew packages</span>
+</span></span><span style="display:flex;"><span>  brews <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Add packages from my_brew_packages.txt</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ripgrep&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;fd&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># etc.</span>
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Add your existing casks</span>
+</span></span><span style="display:flex;"><span>  casks <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Add casks from my_brew_casks.txt</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;firefox&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;visual-studio-code&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># etc.</span>
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Add your Mac App Store apps</span>
+</span></span><span style="display:flex;"><span>  masApps <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Format: &#34;App Name&#34; = App ID</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># From my_mas_apps.txt</span>
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div></li>
+<li>
+<p><strong><strong>Converting Mac App Store IDs</strong></strong></p>
+<p>The output of `mas list` shows IDs and names, but you&rsquo;ll need to reformat them for your Nix configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Example mas list output:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 497799835 Xcode (14.3)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 1333542190 1Password 7 (7.9.5)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Needs to be reformatted as:</span>
+</span></span><span style="display:flex;"><span>masApps <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Xcode&#34;</span> <span style="color:#f92672">=</span> 497799835;
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;1Password 7&#34;</span> <span style="color:#f92672">=</span> 1333542190;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>;
+</span></span></code></pre></div></li>
+</ol>
+<p><strong><strong>Integration Strategy</strong></strong></p>
+<p>You have two options when migrating:</p>
+<ul>
+<li><strong><strong>Full Migration</strong></strong>: Add all packages to your Nix configuration immediately</li>
+<li><strong><strong>Gradual Migration</strong></strong>: Start with a minimal set and add packages as needed</li>
+</ul>
+<p>The gradual approach is often more manageable, as it lets you verify each package works correctly with your Nix setup.</p>
+<p><strong><strong>Dealing with Potential Conflicts</strong></strong></p>
+<p>When you first run `darwin-rebuild switch`, nix-homebrew tries to take control of your Homebrew installation. If you encounter issues:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Backup your existing Homebrew installation</span>
+</span></span><span style="display:flex;"><span>cp -r /opt/homebrew /opt/homebrew-backup
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Let nix-darwin rebuild run</span>
+</span></span><span style="display:flex;"><span>darwin-rebuild switch --flake .#username-mac
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># If needed, restore specific parts from backup</span>
+</span></span></code></pre></div><p><strong><strong>Verify Your Migration</strong></strong></p>
+<p>After rebuilding your system with the new configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Check that your packages are installed</span>
+</span></span><span style="display:flex;"><span>brew list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Verify Mac App Store apps</span>
+</span></span><span style="display:flex;"><span>mas list
+</span></span></code></pre></div><p>With this approach, you&rsquo;ll have successfully migrated your existing Homebrew setup to be managed by Nix, getting the best of both worlds: your familiar tools plus Nix&rsquo;s reproducibility and declarative management.</p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>Caveats and Edge Cases</p>
+<ul>
+<li>
+<p><strong><strong>Custom Builds</strong></strong>: If you have packages installed with custom options using `brew install &ndash;with-xyz`, you&rsquo;ll need to specify those options in your nix-homebrew configuration.</p>
+</li>
+<li>
+<p><strong><strong>Pinned Versions</strong></strong>: Homebrew under Nix will typically use the latest versions. If you need specific versions, consider using Nix packages instead, which support precise versioning.</p>
+</li>
+<li>
+<p><strong><strong>Post-Install Scripts</strong></strong>: If you ran custom scripts after installing certain packages, you&rsquo;ll need to incorporate those into your Nix configuration.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="darwin-system-dot-nix">darwin/system.nix</h4>
+<p>This file configures macOS-specific system settings, preferences, and fonts. You can control pretty much everything on your mac from here. Some examples shown below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nix" data-lang="nix"><span style="display:flex;"><span><span style="color:#75715e"># System-level settings and font configuration</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  pkgs<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>  config<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>  lib<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>  personal<span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>}:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Favorite apps for the dock</span>
+</span></span><span style="display:flex;"><span>  favoriteApps <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;/Applications/Firefox.app&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;/Applications/Visual Studio Code.app&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;/Applications/Alacritty.app&#34;</span>
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">in</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># SYSTEM CONFIGURATION AND STATE</span>
+</span></span><span style="display:flex;"><span>  system<span style="color:#f92672">.</span>stateVersion <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;  <span style="color:#75715e"># System state version</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># SECURITY AND AUTHENTICATION</span>
+</span></span><span style="display:flex;"><span>  security<span style="color:#f92672">.</span>pam<span style="color:#f92672">.</span>enableSudoTouchIdAuth <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;  <span style="color:#75715e"># Enable TouchID for sudo</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># MAC SYSTEM SETTINGS</span>
+</span></span><span style="display:flex;"><span>  system <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    defaults <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      dock <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        autohide <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        orientation <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bottom&#34;</span>;
+</span></span><span style="display:flex;"><span>        show-recents <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        tilesize <span style="color:#f92672">=</span> <span style="color:#ae81ff">48</span>;
+</span></span><span style="display:flex;"><span>        persistent-apps <span style="color:#f92672">=</span> favoriteApps;
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      finder <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        FXPreferredViewStyle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;clmv&#34;</span>;  <span style="color:#75715e"># Use column view as default</span>
+</span></span><span style="display:flex;"><span>        ShowPathbar <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        ShowStatusBar <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      NSGlobalDomain <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        AppleShowAllFiles <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;  <span style="color:#75715e"># Show hidden files</span>
+</span></span><span style="display:flex;"><span>        AppleShowAllExtensions <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;  <span style="color:#75715e"># Show file extensions</span>
+</span></span><span style="display:flex;"><span>        KeyRepeat <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;  <span style="color:#75715e"># Faster key repeat rate</span>
+</span></span><span style="display:flex;"><span>        InitialKeyRepeat <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>;  <span style="color:#75715e"># Reduce delay to keyrepeat start</span>
+</span></span><span style="display:flex;"><span>        AppleICUForce24HourTime <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;  <span style="color:#75715e"># Use 24 hour time</span>
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># NIXPKGS CONFIGURATION</span>
+</span></span><span style="display:flex;"><span>  nixpkgs <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    config<span style="color:#f92672">.</span>allowUnfree <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;  <span style="color:#75715e"># Allow installation of non-free packages</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Note: hostPlatform is already set in flake.nix via the system variable</span>
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># FONT CONFIGURATION</span>
+</span></span><span style="display:flex;"><span>  fonts<span style="color:#f92672">.</span>packages <span style="color:#f92672">=</span> <span style="color:#66d9ef">with</span> pkgs; [
+</span></span><span style="display:flex;"><span>    (nerdfonts<span style="color:#f92672">.</span>override {
+</span></span><span style="display:flex;"><span>      fonts <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;JetBrainsMono&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;FiraCode&#34;</span>
+</span></span><span style="display:flex;"><span>      ];
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>  ];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="darwin-services-dot-nix">darwin/services.nix</h4>
+<p>This file configures macOS services and launch agents.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nix" data-lang="nix"><span style="display:flex;"><span><span style="color:#75715e"># Services configuration</span>
+</span></span><span style="display:flex;"><span>{ config<span style="color:#f92672">,</span> pkgs<span style="color:#f92672">,</span> <span style="color:#f92672">...</span> }:
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  services <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># You can enable and configure various services here</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># For example, yabai (tiling window manager), skhd (hotkey daemon), etc.</span>
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># You can also configure launchd agents here</span>
+</span></span><span style="display:flex;"><span>  launchd<span style="color:#f92672">.</span>user<span style="color:#f92672">.</span>agents <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Example: Start an application at login</span>
+</span></span><span style="display:flex;"><span>    example-app <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      serviceConfig <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        ProgramArguments <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;/Applications/YourApp.app/Contents/MacOS/YourApp&#34;</span>
+</span></span><span style="display:flex;"><span>        ];
+</span></span><span style="display:flex;"><span>        KeepAlive <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        RunAtLoad <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>      };
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>After populating these files, you&rsquo;ll need to build your configuration. Navigate to your nix directory and run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~/nix
+</span></span><span style="display:flex;"><span>darwin-rebuild switch --flake .#username-mac
+</span></span></code></pre></div><p><strong>Please note</strong> If this is your first time running this, you might encounter an error that says darwin-rebuild isn&rsquo;t installed. If that&rsquo;s the case, simply run:</p>
+<p><code>nix run nix-darwin/nix-darwin-24.11#darwin-rebuild -- switch --flake ~/nix#username-mac</code></p>
+<p>Replace &ldquo;username-mac&rdquo; with the machine name you specified in your flake.nix file. This command will evaluate your configuration, build it, and switch your system to use it.</p>
+<p>After the installation is complete, you can run the convenience alias <code>nxr</code> to execute the full rebuild going forward.</p>
+<h2 id="daily-use">Daily Use</h2>
+<p>Anytime you want to make a change, update the corresponding section in your nix environment, make a commit, and then run <code>nxr</code> from your terminal.</p>
+<h2 id="continued-learning">Continued Learning</h2>
+<p>I actually have Nix setup on both my Mac and my Thinkpad, what is beautiful is that I manage both computers using essentially the same nix files. This means that all of my settings, programs, and systems are in perfect parity at all times.</p>
+<p>If I update my terminal font, or install a new app (like Obsidian), I can update one file, save it, nix-reload to confirm, and push that to git.</p>
+<p>I switch to my thinkpad, I git pull and nix-reload and viola, I suddenly have the new program also configured as it was on my mac.</p>
+<p>If that is something you&rsquo;d love to see, reply to <a href="https://github.com/sgoodluck/sgoodluck.github.io/discussions/2">this discussion</a> on Github. It involves some refactoring of the above.</p>
+<h2 id="summary">Summary</h2>
+<p>There you have it, a thoroughly managed system via Nix.</p>
 
 			</div>
 		</article>

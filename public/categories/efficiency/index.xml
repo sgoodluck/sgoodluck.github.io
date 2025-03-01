@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Efficiency on The Good Code Guy</title>
+    <link>http://localhost:1313/categories/efficiency/</link>
+    <description>Recent content in Efficiency on The Good Code Guy</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Feb 2025 16:00:28 -0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/efficiency/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nix-Darwin on MacOS</title>
+      <link>http://localhost:1313/posts/nixdarwin-on-macos/</link>
+      <pubDate>Fri, 21 Feb 2025 15:57:00 -0800</pubDate>
+      <guid>http://localhost:1313/posts/nixdarwin-on-macos/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m going to show you how to setup Nix-Darwin on your Mac to manage your entire computer, its Homebrew packages and more. By the end of this tutorial, you will have your Mac as close to declaratively setup as possible. Let&amp;rsquo;s get started, shall we?&lt;/p&gt;&#xA;&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;h3 id=&#34;what-is-nix-darwin&#34;&gt;What is Nix-Darwin?&lt;/h3&gt;&#xA;&lt;p&gt;Nix is a declarative (explicitly written) package-manager and system-manager. It can also be a standalone operating system that rivals and perhaps even exceeds Arch in its level of capablity and polish (yes, I have had a fully homebaked version of Arch from scratch and it was awesome).&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
