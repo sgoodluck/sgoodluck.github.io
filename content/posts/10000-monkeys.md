@@ -34,7 +34,7 @@ And yet, we find ourselves today in a world full of people who don't understand 
 
 But even a cursory understanding of the systems reveals the utter falseness in these statements.
 
-I've worked with AI tools, I've worked with AI tools a lot. I've trained my own models that made my GPU beg for mercy. I've worked with some of the world's best researchers leading the charge on the subject. And you know what? Most who know these tools inside and out (and who isn't financially incentivized to say otherwise) would hesitate to tell you about their limitations and the overhype of the modern era.
+I've worked with AI tools, I've worked with AI tools a lot. I've trained my own models that made my GPU beg for mercy. I've worked with some of the world's best researchers leading the charge on the subject. And you know what? Most who know these tools inside and out (and who aren't financially incentivized to say otherwise) would readily tell you about their limitations and the overhype of the modern era.
 
 
 ### The promise of modern AI {#the-promise-of-modern-ai}
