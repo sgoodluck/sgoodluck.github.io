@@ -72,7 +72,7 @@ You probably won't do this and don't need to but we will touch on it anyway. If 
 
 When you choose to use "GPT3.5" or "Claude Sonnet" you are using a model trained from the start to behave a certain way.
 
-This is non-trivial and if you don't start with a base mode, is more like assembling the genetic code for your cat, growing it in a test tube, and then training it until it is ready for action. This isn't necessary for most cases and YMMV.
+This is non-trivial and if you don't start with a base model, is more like assembling the genetic code for your cat, growing it in a test tube, and then training it until it is ready for action. This isn't necessary for most cases, is overkill, and YMMV.
 
 
 #### If you can afford to, use fine-tuning {#if-you-can-afford-to-use-fine-tuning}
