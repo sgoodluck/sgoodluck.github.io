@@ -66,13 +66,13 @@ For example, instead of writing "I need a program that visits a bunch of website
 The more precise you can be, especially about things like inputs and outputs, the more useful your result. This is true if you're writing code or generating a body of text or interpreting something.
 
 
-#### If you can afford to, use training {#if-you-can-afford-to-use-training}
+#### If you can afford to, train your own model {#if-you-can-afford-to-train-your-own-model}
 
 You probably won't do this and don't need to but we will touch on it anyway. If you can, get your AI kitten at birth and fill it with monkeys you specifically know about. Do this from birth and you'll end up with a model that is explicitly suited to your task at hand.
 
 When you choose to use "GPT3.5" or "Claude Sonnet" you are using a model trained from the start to behave a certain way.
 
-This is non-trivial and is more like assembling the genetic code for your cat, growing it in a test tube, and then training it until it is ready for action.
+This is non-trivial and if you don't start with a base mode, is more like assembling the genetic code for your cat, growing it in a test tube, and then training it until it is ready for action. This isn't necessary for most cases and YMMV.
 
 
 #### If you can afford to, use fine-tuning {#if-you-can-afford-to-use-fine-tuning}
