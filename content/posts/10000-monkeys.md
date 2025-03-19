@@ -81,7 +81,9 @@ Do you know what ChatGPT stands for? It stands for Chat Generative ****Pre-Train
 
 I believe Abraham Lincoln said something along the lines of: "You can please some of the people all of the time, you can please all of the people some of the time, but you can't please all of the people all of the time"
 
-This is exactly the case with your AI tooling and especially true if you are using AI for anything non-trivial. Fine-tuning is actually a simple process and can have outsized impacts on your results. Remember how I said that AI tools use fancy word associations to produce an output? Fine tuning changes the weights of those fancy word associations, narrowing the overall space and increasing the likelihood that your AI kitten stays on track and learns a fancy trick like how to use the litter box.
+This is exactly the case with your AI tooling and especially true if you are using AI for anything non-trivial. Your AI housecat is trained to please everyone some of the time and it will inevitably disappoint you.
+
+Fine-tuning is actually a simple process and can have outsized impacts on your results. Remember how I said that AI tools use fancy word associations to produce an output? Fine tuning changes the weights of those fancy word associations, narrowing the overall space and increasing the likelihood that your AI kitten stays on track and learns a fancy trick like how to use the litter box.
 
 Not using fine-tuning is fine, but you need to then accept that the AI is much more likely to stray and hallucinate and that no amount of prompting will prevent this.
 
