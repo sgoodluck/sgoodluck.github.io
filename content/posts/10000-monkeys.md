@@ -43,7 +43,7 @@ Now it would be incorrect to say that AI isn't important. As someone who uses AI
 
 With the right prompts, an AI tool like claude can produce a complex multi-file python data pipeline that would have taken me (a professional Software Engineer with a decade of experience) the better part of a week in mere minutes (ok hours and days if you count the re-prompting, rate limits, bug fixing, and so on). A few decades ago, the same program would be have taken months and a team of researchers violently punching holes in cardstock.
 
-In this way, I believe AI tooling is a serious advance in our capability and velocity. Someone with no programming experience and enough stubborn determination can produce ai-generated artifacts that rival and even exceed what a lone engineer could. Isn't that alone worth the hype?
+In this way, I believe AI tooling is a serious advance in our capability and velocity. Someone with no programming experience and enough stubborn determination can produce ai-generated artifacts that rival and even exceed what a lone engineer could produce. Isn't that alone worth the hype?
 
 It depends
 
