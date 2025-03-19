@@ -75,7 +75,7 @@ This is non-trivial and is more like assembling the genetic code for your cat, g
 
 #### If you can afford to, use fine-tuning {#if-you-can-afford-to-use-fine-tuning}
 
-Do you know what ChatGPT stands for? It stands for Chat Generative ****Pre-Trained**** Transformer. In other words, your housecat isn't trained to use the litterbox yet and will almost certainly ruin your fancy sofa if you aren't careful.
+Do you know what ChatGPT stands for? It stands for Chat Generative ****Pre-Trained**** Transformer. In other words, your housecat has already been trained to be a cat but it doesn't know where your litterbox is yet and will almost certainly ruin your fancy sofa if you aren't careful.
 
 I believe Abraham Lincoln said something along the lines of: "You can please some of the people all of the time, you can please all of the people some of the time, but you can't please all of the people all of the time"
 
