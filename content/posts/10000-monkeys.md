@@ -88,9 +88,11 @@ Not using fine-tuning is fine, but you need to then accept that the AI is much m
 
 #### If you can afford to, use RAG {#if-you-can-afford-to-use-rag}
 
-One of the best ways to increase your results is to use a fancy thing called "Retrieval Augmented Generation" or "use some explicitly given sources to generate an answer please". ChatGPT and Perplexity and anytime you upload a file to your AI d'jour already makes use of this. Essentially, you're giving the tool additional data that makes it more likely to generate output that aligns with it.
+One of the best ways to increase your results is to use a fancy thing called "Retrieval Augmented Generation" or more simply "use some explicitly given sources to generate an answer please". ChatGPT, Perplexity and anytime you upload a file to your AI d'jour is already making use of this under the hood.
 
-Ideally, you would use both. Train a model and ensure that it has direct access to information you want it to use.
+Essentially, you're giving the tool additional data that makes it more likely to generate output that aligns with what you are after. Your cat is much more likely to use the litterbox if it knows about it.
+
+Ideally, you would use both. Train a model and ensure that it has direct access to information you want it to use. But fine-tuning with RAG is perfectly acceptable.
 
 
 #### Use a HITL (human in the loop) when building complex systems {#use-a-hitl--human-in-the-loop--when-building-complex-systems}
