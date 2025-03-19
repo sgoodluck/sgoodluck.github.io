@@ -52,14 +52,16 @@ It depends
 
 As someone who works with and writes technical systems for a living, I've had a front-row seat to the modern era of AI and I think it is cool. I also think it will be used by just about every person in every organization everywhere in the world and that this is a great thing.
 
-My gripe stems from the fallacy that using AI is a substitute for good thinking or good business fundamentals; it isn't (AI can't fix stupid unfortunately). Your cat full of dumb monkeys wants to make you happy but like our flesh and blood relationships, it can only do that if you communicate your needs with clarity and intention (go to therapy). If you can remember that these tools are inherently dumb but highly capable, you will maximize your use of them while warding off dread and grift.
+My gripe stems from the fallacy that using AI is a substitute for good thinking or good business fundamentals; it isn't (AI can't fix stupid).
+
+Your cat full of dumb monkeys wants to make you happy but like our flesh and blood relationships, it can only do that if you communicate your needs with clarity and intention (go to therapy). If you can remember that these tools are inherently dumb but highly capable, you will maximize your use of them while warding off dread and grift.
 
 
 #### Be precise with your prompts {#be-precise-with-your-prompts}
 
 Simplifying greatly, AI tools use fancy word associations (hello multi-dimensional vector databases) to identify the next thing. The sentences they build and actions they take depend on how this vector space (fancy association graph) is traversed. Your job as a prompter is to be intentional about the words you use to maximize clarity (narrow potential associations).
 
-For example, instead of writing "I need a program that visits a bunch of websites and reads them to find people I can sell my widget for lion taming to. Can you do this" you would be better served with "I need a program that visits a bunch of websites and reads them to find people I can sell my widget to. Can you do this?" you would be better served with "Please create a python program that (1) takes in a spreadsheet where the first column contains profile URLs (2) opens each profile (3) scores them from 1-5 for likelihood they would benefit from my lion taming service, and writes this score in the second column of the spreadsheet".
+For example, instead of writing "I need a program that visits a bunch of websites and reads them to find people I can sell my widget for lion taming to. Can you do this" you would be better served with "Please create a python program that (1) takes in a spreadsheet where the first column contains profile URLs (2) opens each profile (3) scores them from 1-5 for likelihood they would benefit from my lion taming service, and writes this score in the second column of the spreadsheet".
 
 The more precise you can be, especially about things like inputs and outputs, the more useful your result. This is true if you're writing code or generating a body of text or interpreting something.
 
