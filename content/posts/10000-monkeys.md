@@ -106,13 +106,13 @@ I'm getting tired, so these analogies are getting out of hand. Basically put a h
 
 #### Accept a degree of slop {#accept-a-degree-of-slop}
 
-AI systems are probabilistic at their heart. It is a room full of monkeys randomly slamming on keyboards. That means the same prompt, same model, same data will yield different results when run multiple times. Hallucinations are unavoidable and can only be minimized. This non-determinism (randomness) is what gives the systems such profound capability in the first place.
+AI systems are probabilistic at their heart. It is a room full of monkeys randomly slamming on keyboards. That means the same prompt, same model, same data will yield different results when run multiple times. Hallucinations are unavoidable and can only be minimized. This non-determinism (randomness) is what gives the systems such profound capability in the first place. You can create systems that are very close to deterministic by turning down their temperature and limiting the information they rely on but they will still only ever be "mostly deterministic".
 
 Your job as a wielder of AI is to do whatever you can to minimize the noise going into and coming out of the systems through training, fine tuning, smarter approaches like RAG, and thoughtful prompting.
 
-Do not try to seek perfection because you won't attain it. Instead, create a process that can tolerate the inevitable mistakes and missteps. Ideally, add corrections to your training. If you do all of these things, you'll still just have something dumber than housecat, filled with brainless banana chasing monkeys. But at least these monkeys will go after the right bananas and your housecat might just impress someone.
+Do not try to seek perfection because you won't attain it. Instead, create a process that can tolerate the inevitable mistakes and missteps. Ideally, add corrections to your fine-tuning.
 
-You can create systems that are very close to deterministic by turning down their temperature and limiting the information they rely on but they will only ever be "mostly deterministic".
+If you do these things, you'll still just have something dumber than housecat, filled with brainless banana chasing monkeys. But at least these monkeys will go after the right bananas and your housecat might just impress someone.
 
 
 ## Good luck and happy prompting. {#good-luck-and-happy-prompting-dot}
