@@ -11,7 +11,7 @@ This a post about something near and dear to my heart: ****Debuggers****.
 
 In this post, we are going to explain why you should use a debugger, what they are, and how to set them up in your favorite editor d'jour (whether that is vscode, neovim, or emacs).
 
-Why? Because I believe that quality matters and that by learning to understanding this incredible tool you'll not only have a better time programming, you'll produce better code which is good for everyone.
+Why? Because I believe that quality matters and that by understanding this incredible tool you'll not only have a better time programming, you'll produce better code which is good for everyone.
 
 
 ## Why use a debugger? {#why-use-a-debugger}
