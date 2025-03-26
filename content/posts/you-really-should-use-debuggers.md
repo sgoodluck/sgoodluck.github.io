@@ -208,7 +208,7 @@ Let's see what that looks like. In the image below, you can see the python code 
 
 Afterwards, I decided to use a debugger so I ran \`python -m pdb main.py\` which used the \`-m\` flag to run the \`pdb\` program. This started the [python debugger](https://docs.python.org/3/library/pdb.html) and took \`main.py\` as its argument.
 
-{{< figure src="~/Desktop/Terminal1.png" >}}
+{{< figure src="Terminal1.png" >}}
 
 How do you use the python debugger in the terminal? Well you can always type help or you can use a simple cheat sheet like [this one](https://kapeli.com/cheat_sheets/Python_Debugger.docset/Contents/Resources/Documents/index). It is basically mnemonic which is a fancy way of saying "use the first letter of the action to execute the action".
 
@@ -226,21 +226,21 @@ The first line tells you what file you are in and what line you are on. The seco
 
 If we type ****n**** (for next) three times, we will get to main and can then ****s**** (for step into) our main() function. We can keep going with next until we get to \`result = calculate_sum(test_data)\`. At this point we want to \`step into\` \`calculate_sum(...)\` and inspect numbers using \`p numbers\` like so:
 
-{{< figure src="~/Desktop/Terminal2.png" >}}
+{{< figure src="Terminal2.png" >}}
 
 So far, so good. But stepping through code manually can become tedious. Based on our test cases, we can see that the our \`total\` variable doesn't seem to be getting all the numbers. Let's add a breakpoint on line 6 where the total is summing (the screenshot contains relative numbers).
 
 We will ****c**** (for continue) to the breakpoint. Now we want to watch some variables, so let's use \`display i, total\` to watch our index and our growing total. This instructs pdb to print these variables each time the breakpoint is hit.
 
-{{< figure src="~/Desktop/Terminal3.png" >}}
+{{< figure src="Terminal3.png" >}}
 
 Running continue a couple of times and we can see that we broke out of our loop at index=3 instead of 4! Hoozah, we have discovered the bug. We don't want to subtract 1 on line 5. A quick correction and we can see that the code is happy again.
 
-{{< figure src="~/Desktop/Terminal4.png" >}}
+{{< figure src="Terminal4.png" >}}
 
 Here is an abbreviated version doing the same thing with our javascript code. A quick \`help\` command shows almost the same mnemonic commands
 
-{{< figure src="~/Desktop/Terminal5.png" >}}
+{{< figure src="Terminal5.png" >}}
 
 Here, we ran the code and saw that our tests failed. We ran the code through our debugger and set a breakpoint on line 7 and used \`watch\` (which is like display) on the \`sum\` and \`count\` variables.
 
@@ -256,22 +256,22 @@ Ah vscode. vscode is like other major IDEs in that it tries to abstract and hide
 Let's see what this looks like in vscode.
 
 First, we need to select our debugger (click the play button with a bug on it) and for the sake of explanation, click "Create a launch.json" file link:
-![](~/Desktop/vscode1.png)
+![](vscode1.png)
 
 That will open up a file that looks like this that gives you a bunch of confusing menu options. They are each useful and basically tell the node debugger to behave differently. These are all just set comparable command line configurations in the terminal using node or nodemon... let's pick "Attach" which is the simplest.
-![](~/Desktop/vscode2.png)
+![](vscode2.png)
 
 Next, in your code simply hover in the spot you want a breakpoint and click your mouse thing (I'm an emacs/neovim guy, rats disgust me) on the lines you want a breakpoint. Great, now click the debug play button in the top left.
-![](~/Desktop/vscode3.png)
+![](vscode3.png)
 
 Now you'll see a beautiful debugging experience in the IDE that shows you variables, call stacks, and more. You might even recognize the debug control commands now.
-![](~/Desktop/vscode4.png)
+![](vscode4.png)
 
 As you can see, while the setup is more cumbersome, the result is a prettier (and arguably more useful) developer experience. VSKids rejoice!
 
 I'm too lazy to type this out myself, so here's an AI generated table of the commands and their equivalent vscode launch settings:
 
-{{< figure src="~/Desktop/vscode5.png" >}}
+{{< figure src="vscode5.png" >}}
 
 Fear not ye emacs and neovim users. You can have the same prettiness in neovim and emacs. Let's take a look.
 
