@@ -5,10 +5,6 @@ date = 2025-03-25T10:21:00-07:00
 tags = ["debuggers", "dap", "lsp"]
 categories = ["Programming"]
 draft = false
-[[resources]]
-  [resources.params]
-    match = "images/(.*)"
-    dest = "images/\\1"
 +++
 
 Ok it is that time again where I write a blog post about something near and dear to my heart: ****Debuggers****.
@@ -26,7 +22,7 @@ Print statements and console logs are comically inept compared to running a debu
 
 Right now, if you are relying on \`console.log("help me")\` and \`print("help me please")\` you are programming like this:
 
-{{< figure src="./images/baby.jpg" >}}
+{{< figure src="./baby.jpg" >}}
 
 She isn't even holding it right!
 
