@@ -20,7 +20,7 @@ If you aren't using a debugger in your programming life, you are skiing with onl
 
 Debugging without a debugger is also referred to as ****caveperson debugging**** because it is dumb, a little unsightly, and about as effective as hitting a computer with a club and expecting a meal.
 
-Print statements and console logs are comically inept compared to running a debugger. If you are relying on \`console.log("help me")\` and \`print("help me please")\` you are programming like this:
+Print statements and console logs are comically inept compared to running a debugger. If you are relying on `console.log("help me")` and `print("help me please")` you are programming like this:
 
 ![](/ox-hugo/baby.jpg)
 She isn't even holding it right!
