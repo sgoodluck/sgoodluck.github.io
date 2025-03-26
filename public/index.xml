@@ -6,14 +6,14 @@
     <description>Recent content on The Good Code Guy</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Mar 2025 21:08:05 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 26 Mar 2025 00:46:18 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>You really should use debuggers</title>
       <link>http://localhost:1313/posts/you-really-should-use-debuggers/</link>
       <pubDate>Tue, 25 Mar 2025 10:21:00 -0700</pubDate>
       <guid>http://localhost:1313/posts/you-really-should-use-debuggers/</guid>
-      <description>&lt;p&gt;Ok it is that time again where I write a blog post about something near and dear to my heart: &lt;strong&gt;&lt;strong&gt;Debuggers&lt;/strong&gt;&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;In this post, we are going to explain why you should use debuggers, what they are, and how to set them up in your editor d&amp;rsquo;jour (whether that is vscode, neovim, or emacs).&lt;/p&gt;&#xA;&lt;p&gt;Why? Because I believe that quality matters and that by learning to understand use this tool you&amp;rsquo;ll not only have a better time programming, but that you&amp;rsquo;ll produce better code which is good for everyone.&lt;/p&gt;</description>
+      <description>&lt;p&gt;This a post about something near and dear to my heart: &lt;strong&gt;&lt;strong&gt;Debuggers&lt;/strong&gt;&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;In this post, we are going to explain why you should use a debugger, what they are, and how to set them up in your favorite editor d&amp;rsquo;jour (whether that is vscode, neovim, or emacs).&lt;/p&gt;&#xA;&lt;p&gt;Why? Because I believe that quality matters and that by understanding this incredible tool you&amp;rsquo;ll not only have a better time programming, you&amp;rsquo;ll produce better code which is good for everyone.&lt;/p&gt;</description>
     </item>
     <item>
       <title>10,000 Monkeys</title>

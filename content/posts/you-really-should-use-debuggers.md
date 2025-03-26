@@ -18,7 +18,7 @@ Why? Because I believe that quality matters and that by understanding this incre
 
 If you aren't using a debugger in your programming life, you are skiing with only one boot on and there isn't even snow.
 
-Debugging without a debugger is also referred to as ****caveperson debugging**** because it is dumb, a little unsightly, and about as effective as hitting a computer with a club and expecting a meal.
+Debugging without a debugger is often referred to as ****caveperson debugging**** because it is dumb, a little unsightly, and about as effective as hitting a computer with a club and expecting a meal.
 
 Print statements and console logs are comically inept compared to running a debugger. If you are relying on `console.log("help me")` and `print("help me please")` you are programming like this:
 
@@ -105,9 +105,9 @@ Debuggers use a standard set of commands. These commands let you navigate around
 
 ## Debugging in different editors {#debugging-in-different-editors}
 
-We are going to setup and use a debugger in `python` and `javascript` using the `terminal`, `vscode`, `emacs`, and neovim. This should (A) drive home the point that debuggers are easy to use/setup and (B) that you can use them in most contexts
+We are going to setup and use a debugger in `python` and `javascript` using the `terminal`, `vscode`, `emacs`, and `neovim`. This should (A) drive home the point that debuggers are easy to use/setup and (B) that you can use them in most contexts
 
-For this next part ensure that you have python and/or javascript installed as these come with built-in debuggers. Some languages, like `Go` require that you install a separate package such as `delve` to debug.
+For this next part ensure that you have `python` and/or `javascript` installed as these come with built-in debuggers. Some languages, like `Go` require that you install a separate package such as `delve` to debug.
 
 
 ### Setup {#setup}
@@ -206,9 +206,9 @@ Instead, let's use a debugger and set breakpoints to pause the code exactly wher
 
 ### Debugging in the terminal {#debugging-in-the-terminal}
 
-Rememember: Debugging is just executing your code with a different command. Since you can run your code in a terminal, you can run the debugger in the terminal as well.
+Remember: Debugging is just executing your code with a different command. Since you can run your code in a terminal, you can run the debugger in the terminal as well.
 
-In the image below, I have our python code opened in `neovim` on the right and on the left, I've run `python main.py` followed by `python -m pdb main.py`. This started the python debugger which took \`main.py\` as its argument.
+In the image below, I have our python code opened in `neovim` on the right and on the left, I've run `python main.py` followed by `python -m pdb main.py`. This started the python debugger which took `main.py` as its argument.
 ![](/ox-hugo/Terminal1.png)
 
 How do you use the python debugger in the terminal? You can always type `help` or you can use a simple cheat sheet like [this one](https://kapeli.com/cheat_sheets/Python_Debugger.docset/Contents/Resources/Documents/index). Most debuggers have mnemonic command system which is a fancy way of saying "use the first letter of an action to execute that action". In other words, `q` means `quit` and `b` means `breakpoint` and `c` means `continue` and so on.
@@ -249,7 +249,7 @@ We don't want to subtract 1 on `line 5`. A quick correction and we can see that 
 
 #### Terminal debugger with node {#terminal-debugger-with-node}
 
-Here is an abbreviated version doing the same thing with our javascript code. A quick \`help\` command will show similar mnemonic commands. In this case, setting a breakpoint uses `sb(line #)` and watching variables is achieved by `watch('variableName')`
+Here is an abbreviated version doing the same thing with our javascript code. A quick `help` command will show similar mnemonic commands. In this case, setting a breakpoint uses `sb(line #)` and watching variables is achieved by `watch('variableName')`
 ![](/ox-hugo/Terminal5.png)
 
 As before, we ran the code via node and saw something unexpected. So, we ran the code using the debugger via `node inspect main.js`. We set a breakpoint on `line 7` and set a `watch` on the `sum` and `count` variables. One `c` (continue to next breakpoint) later and we finish our first test case can see the value of those variables (which are incorrect). Can you see the issue now?
@@ -283,15 +283,14 @@ If all is well, the program will execute and then pause on line 11. The UI shows
 ![](/ox-hugo/vscode4.png)
 While the setup is more cumbersome (launch.json configuration files require that you read documentation to use them properly), the result is a prettier (and arguably more useful) developer experience. VSKids rejoice!
 
-<!--list-separator-->
 
--  launch.json vs command line arguments
+#### launch.json vs command line arguments {#launch-dot-json-vs-command-line-arguments}
 
-    I'm too lazy to type this out myself, so here's an AI generated table of various debug node commands and their equivalent vscode launch settings:
+I'm too lazy to type this out myself, so here's an AI generated table of various debug node commands and their equivalent vscode launch settings:
 
-    {{< figure src="/ox-hugo/vscode5.png" >}}
+{{< figure src="/ox-hugo/vscode5.png" >}}
 
-    There are plenty more, but you should generally get the idea that most parts of a `launch.json` correspond to some CLI equivalent.
+There are plenty more, but you should generally get the idea that most parts of a `launch.json` correspond to some CLI equivalent.
 
 
 ### Debugging in neovim {#debugging-in-neovim}
@@ -328,33 +327,28 @@ I will be using `doom emacs` for this because that's just how I'm rolling these 
 #### Installing DAPE {#installing-dape}
 
 1.  Comment out anything in your `init.el` file to do with debugging (if on Doom)
-2.  Add this line to your `packages.el` file to install dape
+2.  Add this line to your `packages.el` file to install dape:
 
-`(package! dape) ;; debugging in emacs`
+    `(package! dape) ;; debugging in emacs`
+3.  Add these lines to your `config.el` file to configure a basic debugging setup
+    ```emacs-lisp
+    ;;;; DAPE Debugger Configuration
+    (use-package! dape
+      :config
 
-1.  Add these lines to your `config.el` file to configure a basic debugging setup
-
-<!--listend-->
-
-```emacs-lisp
-;;;; DAPE Debugger Configuration
-(use-package! dape
-  :config
-
-  ;; Optional: Global keybindings
-  (map!
-   :leader
-   :desc "Debug start/continue" "d d" #'dape
-   :desc "Debug stop" "d k" #'dape-stop
-   :desc "Debug restart" "d r" #'dape-restart
-   :desc "Debug next" "d n" #'dape-next
-   :desc "Debug step in" "d i" #'dape-step-in
-   :desc "Debug step out" "d o" #'dape-step-out
-   :desc "Debug continue" "d c" #'dape-continue
-   :desc "Toggle Breakpoint" "d b" #'dape-breakpoint-toggle))
-```
-
-1.  Following [the directions](https://github.com/svaante/dape?tab=readme-ov-file), install any relevant debugger software you need on your system.
+      ;; Optional: Global keybindings
+      (map!
+       :leader
+       :desc "Debug start/continue" "d d" #'dape
+       :desc "Debug stop" "d k" #'dape-stop
+       :desc "Debug restart" "d r" #'dape-restart
+       :desc "Debug next" "d n" #'dape-next
+       :desc "Debug step in" "d i" #'dape-step-in
+       :desc "Debug step out" "d o" #'dape-step-out
+       :desc "Debug continue" "d c" #'dape-continue
+       :desc "Toggle Breakpoint" "d b" #'dape-breakpoint-toggle))
+    ```
+4.  Following [the directions](https://github.com/svaante/dape?tab=readme-ov-file), install any relevant debugger software you need on your system.
 
 
 #### Using DAPE {#using-dape}
