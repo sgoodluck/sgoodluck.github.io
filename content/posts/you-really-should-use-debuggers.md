@@ -22,13 +22,13 @@ Print statements and console logs are comically inept compared to running a debu
 
 Right now, if you are relying on \`console.log("help me")\` and \`print("help me please")\` you are programming like this:
 
-{{< figure src="./baby.jpg" >}}
+{{< figure src="baby.jpg" >}}
 
 She isn't even holding it right!
 
 Once you learn the art of the debugger, you will feel like this:
 
-{{< figure src="./images/neo.jpg" >}}
+{{< figure src="neo.jpg" >}}
 
 Seriously, with a debugger you get to stop your code in place and inspect (or change) anything you want to. You get to see the matrix and control it in a way that gives you god-like control over what is happening. Finding and eliminating bugs becomes incredibly efficient.
 
