@@ -27,7 +27,8 @@ Print statements and console logs are comically inept compared to running a debu
 
 Right now, if you are relying on \`console.log("help me")\` and \`print("help me please")\` you are programming like this:
 
-![](baby.jpg)
+{{< figure src="baby.jpg" >}}
+
 She isn't even holding it right!
 
 Once you learn the art of the debugger, you will feel like this:
