@@ -7,82 +7,84 @@ categories = ["Programming"]
 draft = false
 +++
 
-Ok it is that time again where I write a blog post about something near and dear to my heart: ****Debuggers****.
+This a post about something near and dear to my heart: ****Debuggers****.
 
-In this post, we are going to explain why you should use debuggers, what they are, and how to set them up in your editor d'jour (whether that is vscode, neovim, or emacs).
+In this post, we are going to explain why you should use a debugger, what they are, and how to set them up in your favorite editor d'jour (whether that is vscode, neovim, or emacs).
 
-Why? Because I believe that quality matters and that by learning to understand use this tool you'll not only have a better time programming, but that you'll produce better code which is good for everyone.
-
-
-#### Does it make sense with AI and Vibe Coding? {#does-it-make-sense-with-ai-and-vibe-coding}
-
-Absolutely, in fact I would say learning to use a debugger is much more important in the age of AI and Vibe Code. It is the most efficient way to understand your vibe code and to diagnose issues that you or your AI minions can fix.
+Why? Because I believe that quality matters and that by learning to understanding this incredible tool you'll not only have a better time programming, you'll produce better code which is good for everyone.
 
 
-## Why you should use a debugger {#why-you-should-use-a-debugger}
+## Why use a debugger? {#why-use-a-debugger}
 
-Alright, let's get right down to the chase. If you aren't using a debugger in your programming life, you are skiing with only one boot on and there isn't even snow. Do you know what we call debugging without a debugger? ****caveperson debugging**** because it is dumb, a little unsightly, and about as effective as hitting a computer with a rock and hoping for it to just start working.
+If you aren't using a debugger in your programming life, you are skiing with only one boot on and there isn't even snow.
 
-Print statements and console logs are comically inept compared to running a debugger and no, there isn't a good reason to prefer them. The only reason people prefer them is because they haven't figured out how to use their debugger in the first place.
+Debugging without a debugger is also referred to as ****caveperson debugging**** because it is dumb, a little unsightly, and about as effective as hitting a computer with a club and expecting a meal.
 
-Right now, if you are relying on \`console.log("help me")\` and \`print("help me please")\` you are programming like this:
+Print statements and console logs are comically inept compared to running a debugger. If you are relying on \`console.log("help me")\` and \`print("help me please")\` you are programming like this:
 
-{{< figure src="/ox-hugo/baby.jpg" >}}
-
+![](/ox-hugo/baby.jpg)
 She isn't even holding it right!
 
-Once you learn the art of the debugger, you will feel like this:
+Once you learn to use your debugger, you will feel like this:
+![](/ox-hugo/neo.jpg)
 
-{{< figure src="/ox-hugo/neo.jpg" >}}
 
-Seriously, with a debugger you get to stop your code in place and inspect (or change) anything you want to. You get to see the matrix and control it in a way that gives you god-like control over what is happening. Finding and eliminating bugs becomes incredibly efficient.
+### Better for debugging {#better-for-debugging}
 
-Where you would normally type some kind of print statement into your code, you can just add something called a \`breakpoint\`, run your code, and the code will pause at that point and you can inspect and even change nearly any variable frozen bullet style.
+Seriously, with a debugger you get to stop your code in place and inspect (or change) anything you want. This gives you incredible levels of insight and control over your programs. Bug finding and correcting become massively more efficient.
+
+
+### Better for learning a new codebase {#better-for-learning-a-new-codebase}
+
+If you are jumping into an existing project at work or contributing to an open source project, using the debugger is one of the most efficient ways to become familiar with a new codebase. You can simply run the debugger and watch the code execute step-by-step.
 
 
 ### If debuggers are so great, why doesn't everyone use them? {#if-debuggers-are-so-great-why-doesn-t-everyone-use-them}
 
-Setting them up can be tricky and a lot of the time people want to get right into the fun of whatever they are programming. I've taught dozens of people to use their debuggers and the common pattern is a lack of understanding around what a debugger is.
+Setting them up can seem tricky and be frustrating. This stems from a lack of understanding about what a debugger is and how it works.
+Once you understand them in a fundamental way, using them becomes easy.
 
-I think once you understand what a debugger is doing, the setup makes a lot more sense. Once you know what they are doing and how to set them up, they become as second nature as using an LSP (that's the thing that gives you cute code completions and auto suggestions).
+
+### Is learning to use a debugger worth it in the age of AI and Vibe Code? {#is-learning-to-use-a-debugger-worth-it-in-the-age-of-ai-and-vibe-code}
+
+Absolutely, in fact I would say learning to use a debugger is even more important in the age of AI and Vibe Code. It is the most efficient way to understand your vibe code and to pinpoint issues that you or your AI minions can fix.
 
 
-## What is a debugger {#what-is-a-debugger}
+## What exactly is a debugger? {#what-exactly-is-a-debugger}
 
-A debugger is a different runtime process for whatever program you working on. In normal person language, instead of running your program using "python" or "node" or whatever other command you run it using that language's debugger.
+A debugger is a different runtime process for whatever program you working on. In normal person language, instead of running your program using "python" or "node" or whatever other command you're using, you run your program using that language's debugger. Running a debugger is often as simple as doing `python -m pdb myProj.py` instead of `python myProj.py` or `node inspect myScript.js` instead of `node myScript.js`.
 
-This looks like \`python -m pdb myProj.py\` instead of \`python myProj.py\` or \`node inspect myScript.js\` instead of \`node myScript.js\`.
+****Key Point****: A debugger is usually a part of the language package installed on your computer
 
-If you're familiar with python or containerization, an analogy would be that executing code through a debugger is a lot like running the program in its own special container. That container has its own behavior and tooling that allow you to pause and inspect code.
+Analogously, executing code using the debugger is sort of like running your program in its own special container. This container has its own behavior and tooling that allow you to pause and inspect code while the program runs.
 
-So when you run a debugger, the debugger environment loads your program (not your normal programming run command), instruments magical hooks and monitors (giving you the ability to inspect variables normally hidden in a maze of memory), and manages its execution (giving you the capability to pause or step through code).
+Thus when you run a debugger, the debugger loads your program, instruments magical hooks and monitors that give you the ability to inspect variables normally hidden in a maze of memory, and manages your program's execution which allows you to pause and step through code.
 
 
 #### What about the debugger in my IDE? {#what-about-the-debugger-in-my-ide}
 
-IDEs don't really have debuggers, they just have interfaces that use the underlying language's debugger.
+Your IDE does not have a debugger, it just has a UI that uses the underlying language's debugger.
 
-There is no difference in the debugger whether you run it in vscode, terminal, emacs, neovim, or some other mechanism. In almost every case, your editor of choice is relying on the same underlying debug environment[^fn:1].
+That's right - there is no difference in the debugger whether you run it in `vscode`, `terminal`, `emacs`, `neovim`,
+or some other editor. In almost every case, all editors rely on the same underlying debug environments[^fn:1].
 
-That's right. They just make a nice gui with some pretty buttons that run the underlying debugger. Your \`launch.json\` file in vscode just tells vscode how to run that language's debugger. That's it.
+Your `launch.json` file in `vscode` just instructs vscode on how to run the language's builtin debugger.
 
-****A debugger is a part of the language, not the editor****
-
-Keep this in mind and everything else will be easy.
+****A debugger is a part of (or an add-on) to the language, not a part of your editor****
 
 
 ### Debugger Commands {#debugger-commands}
 
-Debuggers use a mostly standard set of commands whether you're running through the terminal or in some IDE. These commands let you navigate around your code while debugging. You don't need to remember all of them but here is a primer that will cover 90% of what you will do.
+Debuggers use a standard set of commands. These commands let you navigate around your code while debugging. You don't need to remember all of them but here is a primer that will cover 90% of what you will do.
 
 
 #### Navigation {#navigation}
 
 -   ****Set/Remove Breakpoint****: Marks a line where execution should pause
--   ****Continue/Resume****: Proceeds execution until the next breakpoint
+-   ****Continue/Resume****: Proceeds until the next breakpoint
 -   ****Step Over****: Executes the current line and stops at the next line
--   ****Step Into****: Moves into a function call to debug its internal code
--   ****Step Out****: Finishes executing the current function and returns to the caller
+-   ****Step Into****: Moves into a function to let you debug its internal code
+-   ****Step Out****: Finishes executing the current function and returns to the calling function
 
 
 #### Inspection {#inspection}
@@ -98,17 +100,21 @@ Debuggers use a mostly standard set of commands whether you're running through t
 -   ****Conditional Breakpoints****: Pause execution only when a specified condition is true
 -   ****Change Variable Value****: Modify a variable's value during execution
 -   ****Restart****: Reset debugging session without restarting the debugger
--   ****Run to Cursor****: Execute until reaching the line where the cursor is placed
+-   ****Run to Cursor****: Execute until reaching the line where the cursor is
 
 
-## Let's debug in different editors {#let-s-debug-in-different-editors}
+## Debugging in different editors {#debugging-in-different-editors}
 
-For this next part, I'm going to setup a debugger for \`python\` and \`javascript\` in multiple editors. This should drive home the points that (A) debuggers are easy and (B) that you can use them easily.
+We are going to setup and use a debugger in `python` and `javascript` using the `terminal`, `vscode`, `emacs`, and neovim. This should (A) drive home the point that debuggers are easy to use/setup and (B) that you can use them in most contexts
 
-For kicks, I'll also generate some code in both languages that has a bug in it.
-Ensure that you have python and/or javascript installed.
+For this next part ensure that you have python and/or javascript installed as these come with built-in debuggers. Some languages, like `Go` require that you install a separate package such as `delve` to debug.
 
-Now, let's get things setup.
+
+### Setup {#setup}
+
+We are going to create a buggy `python` and `javascript` file and use their respective debuggers in different editors.
+
+To start, let's create our little testing area:
 
 ```bash
 # First create the directory structure
@@ -118,9 +124,7 @@ mkdir -p debugger/python debugger/js
 touch debugger/python/main.py debugger/js/main.js
 ```
 
-Let's put some simple but buggy code in each of these files. You might be able to readily identify the bugs or think of where you might insert print statements. That's fine, this is for illustration.
-
-Go ahead and paste the following into main.py:
+Let's `cd debugger/python`, open `main.py` and paste in the following code.
 
 ```python
 def calculate_sum(numbers):
@@ -152,7 +156,9 @@ if __name__ == "__main__":
     main()
 ```
 
-And paste the following into main.js:
+You can run this via `python main.py`. You should see some test results and an obvious problem.
+
+Next, `cd ../js/`, open `main.js` and paste the following in:
 
 ```javascript
 function calculateAverage(numbers) {
@@ -183,38 +189,31 @@ function main() {
 main();
 ```
 
-How would you go about debugging either of these using print statements?
+Similarly, you can this via `node main.js`. As before, you will see test results and a problem.
 
-"I suppose you could inject your print statement into the for loop and then watch it print."
+
+#### How would you debug these using print statements? {#how-would-you-debug-these-using-print-statements}
+
+> "I suppose you could inject your print statement into the for loop and then watch it print."
 
 What if the bug only occurs in some cases or the list is really large?
 
-"I guess you could add an if-block in your code to print only when..." and so on and so forth
+> "I guess you could add an if-block in your code to print only when..."
 
-This isn't efficient and you potentially risk introducing new bugs by introducing even more code to something problematic.
-
+This is not efficient and might introduce undesirable side effects.
 Instead, let's use a debugger and set breakpoints to pause the code exactly where we think there is an issue.
 
-****Bonus tip****
 
-You can make your breakpoints conditional too so you only pause when some condition is met. Cool, right?
+### Debugging in the terminal {#debugging-in-the-terminal}
 
+Rememember: Debugging is just executing your code with a different command. Since you can run your code in a terminal, you can run the debugger in the terminal as well.
 
-### Using terminal {#using-terminal}
+In the image below, I have our python code opened in `neovim` on the right and on the left, I've run `python main.py` followed by `python -m pdb main.py`. This started the python debugger which took \`main.py\` as its argument.
+![](/ox-hugo/Terminal1.png)
 
-Remember that thing I said about a debugger just being a different command to run your code? Well since you can run your code in a terminal, it means you can run your debugger in the terminal.
+How do you use the python debugger in the terminal? You can always type `help` or you can use a simple cheat sheet like [this one](https://kapeli.com/cheat_sheets/Python_Debugger.docset/Contents/Resources/Documents/index). Most debuggers have mnemonic command system which is a fancy way of saying "use the first letter of an action to execute that action". In other words, `q` means `quit` and `b` means `breakpoint` and `c` means `continue` and so on.
 
-Let's see what that looks like. In the image below, you can see the python code opened in neovim on the right. On the left, a terminal where I've run \`python main.py\`.
-
-Afterwards, I decided to use a debugger so I ran \`python -m pdb main.py\` which used the \`-m\` flag to run the \`pdb\` program. This started the [python debugger](https://docs.python.org/3/library/pdb.html) and took \`main.py\` as its argument.
-
-{{< figure src="/ox-hugo/Terminal1.png" >}}
-
-How do you use the python debugger in the terminal? Well you can always type help or you can use a simple cheat sheet like [this one](https://kapeli.com/cheat_sheets/Python_Debugger.docset/Contents/Resources/Documents/index). It is basically mnemonic which is a fancy way of saying "use the first letter of the action to execute the action".
-
-In other words, \`q\` means quit and \`b\` means break and \`c\` means continue and so on...
-
-Notice what \`pdb\` printed
+Inspecting the terminal, we can see what the python debugger printed:
 
 ```bash
 > /Users/sgoodluck/Documents/Projects/debugger/python/main.py(1)<module>()
@@ -222,81 +221,168 @@ Notice what \`pdb\` printed
 (Pdb)
 ```
 
-The first line tells you what file you are in and what line you are on. The second line tells you where the debugger has paused execution.
+Line 1 tells us what file we are in and what line we are on. Line 2 has printed the line of code at this point. Line 3 is awaiting our next command.
 
-If we type ****n**** (for next) three times, we will get to main and can then ****s**** (for step into) our main() function. We can keep going with next until we get to \`result = calculate_sum(test_data)\`. At this point we want to \`step into\` \`calculate_sum(...)\` and inspect numbers using \`p numbers\` like so:
 
-{{< figure src="/ox-hugo/Terminal2.png" >}}
+#### Navigating code with the debugger {#navigating-code-with-the-debugger}
 
-So far, so good. But stepping through code manually can become tedious. Based on our test cases, we can see that the our \`total\` variable doesn't seem to be getting all the numbers. Let's add a breakpoint on line 6 where the total is summing (the screenshot contains relative numbers).
+If we type `n` (for next) three times, we will get to `main` and can use `s` (for step into) to step-into the `main()` function. We can keep using `n` until we get to `result = calculate_sum(test_data)`.
 
-We will ****c**** (for continue) to the breakpoint. Now we want to watch some variables, so let's use \`display i, total\` to watch our index and our growing total. This instructs pdb to print these variables each time the breakpoint is hit.
+At this point we want to `s` (step into) `calculate_sum(...)` and inspect the variable `numbers` using `p` (print) like so:
+![](/ox-hugo/Terminal2.png)
+
+
+#### Using breakpoints {#using-breakpoints}
+
+So far, things look good. However, stepping through code manually this way is tedious. Let's use a breakpoint to pause code execution exactly when we want to. Looking briefly at our test cases, we can see that our `total` variable seems to not be adding everything in the array. Let's add a breakpoint on `line 6` where we are calculating this variable by using `b 6` (breakpoint at line 6).
+
+Now, `c` (for continue). This will run the code until it hits the breakpoint we just set. At this point we the program is paused inside our for loop.We want to watch the value of `i` and `total`, so let's use `display i, total` which instructs pdb to print these variables each time it pauses on our breakpoint.
 
 {{< figure src="/ox-hugo/Terminal3.png" >}}
 
-Running continue a couple of times and we can see that we broke out of our loop at index=3 instead of 4! Hoozah, we have discovered the bug. We don't want to subtract 1 on line 5. A quick correction and we can see that the code is happy again.
+After `c` (continuuing) a couple of times and we can see that we broke out of our loop at `index = 3` instead of `index =4`.
+Congratulations, we have discovered the bug!
 
-{{< figure src="/ox-hugo/Terminal4.png" >}}
-
-Here is an abbreviated version doing the same thing with our javascript code. A quick \`help\` command shows almost the same mnemonic commands
-
-{{< figure src="/ox-hugo/Terminal5.png" >}}
-
-Here, we ran the code and saw that our tests failed. We ran the code through our debugger and set a breakpoint on line 7 and used \`watch\` (which is like display) on the \`sum\` and \`count\` variables.
-
-We can see immediately that both the sum and count are incorrect. Can you identify the issue now?
-
-Get it? Debuggers are POWERFUL.
+We don't want to subtract 1 on `line 5`. A quick correction and we can see that the code is behaving as we expect.
+![](/ox-hugo/Terminal4.png)
 
 
-### Using vscode {#using-vscode}
+#### Terminal debugger with node {#terminal-debugger-with-node}
 
-Ah vscode. vscode is like other major IDEs in that it tries to abstract and hide away what is really going on. But now you know - your IDE is running the language's debugger under the hood and provides some visual gui niceties to make using it a bit easier (or so they say, personally I find vscode to be the least intuitive since you have to deal with this extra configuration file... but this post isn't for my complaints).
+Here is an abbreviated version doing the same thing with our javascript code. A quick \`help\` command will show similar mnemonic commands. In this case, setting a breakpoint uses `sb(line #)` and watching variables is achieved by `watch('variableName')`
+![](/ox-hugo/Terminal5.png)
 
-Let's see what this looks like in vscode.
+As before, we ran the code via node and saw something unexpected. So, we ran the code using the debugger via `node inspect main.js`. We set a breakpoint on `line 7` and set a `watch` on the `sum` and `count` variables. One `c` (continue to next breakpoint) later and we finish our first test case can see the value of those variables (which are incorrect). Can you see the issue now?
 
-First, we need to select our debugger (click the play button with a bug on it) and for the sake of explanation, click "Create a launch.json" file link:
+Debuggers are ****POWERFUL**** but using a debugger in the terminal is a bit of a drag.
+
+
+### Debugging in vscode {#debugging-in-vscode}
+
+`vscode`, like all major IDEs, tries to hide what is really going on. But now you know - your IDE is running the language's debugger under the hood and simply provides a visual UI to make it easier to use (or so they say). `vscode` and other editors use a configuration file that tells `vscode` how to interact with the underlying debugger.
+
+
+#### Creating a launch.json file {#creating-a-launch-dot-json-file}
+
+Let's open `vscode` to the same working directory as before. This time, click the "Debug" icon on the left panel. For illustrative purposes, instead of selecting a debugger, click the `create a launch.json` link on the left side panel.
 ![](/ox-hugo/vscode1.png)
 
-That will open up a file that looks like this that gives you a bunch of confusing menu options. They are each useful and basically tell the node debugger to behave differently. These are all just set comparable command line configurations in the terminal using node or nodemon... let's pick "Attach" which is the simplest.
+This will create a file called `launch.json` and prompt you through some confusing menu options. Click the `Node.js: Attach` option for now for simplicity.  All of these adjust equivalent command line configurations (more on that later)
 ![](/ox-hugo/vscode2.png)
 
-Next, in your code simply hover in the spot you want a breakpoint and click your mouse thing (I'm an emacs/neovim guy, rats disgust me) on the lines you want a breakpoint. Great, now click the debug play button in the top left.
+
+#### Setting breakpoints {#setting-breakpoints}
+
+Next, open your `main.js` file and click your mouse thing (I'm an emacs/neovim guy, rats gross me out) to the left of the line number where you want to set a breakpoint. We add a breakpoin to `line 11` in this case. Finally click the green run arrow in the top left that says "Launch Program".
 ![](/ox-hugo/vscode3.png)
 
-Now you'll see a beautiful debugging experience in the IDE that shows you variables, call stacks, and more. You might even recognize the debug control commands now.
+
+#### Using the debugger UI {#using-the-debugger-ui}
+
+If all is well, the program will execute and then pause on line 11. The UI shows you all of the variables at the current point, the call stack, and more. You might even recognize the control button actions now. This is where IDEs can really shine when it comes to debugging.
 ![](/ox-hugo/vscode4.png)
+While the setup is more cumbersome (launch.json configuration files require that you read documentation to use them properly), the result is a prettier (and arguably more useful) developer experience. VSKids rejoice!
 
-As you can see, while the setup is more cumbersome, the result is a prettier (and arguably more useful) developer experience. VSKids rejoice!
+<!--list-separator-->
 
-I'm too lazy to type this out myself, so here's an AI generated table of the commands and their equivalent vscode launch settings:
+-  launch.json vs command line arguments
 
-{{< figure src="/ox-hugo/vscode5.png" >}}
+    I'm too lazy to type this out myself, so here's an AI generated table of various debug node commands and their equivalent vscode launch settings:
 
-Fear not ye emacs and neovim users. You can have the same prettiness in neovim and emacs. Let's take a look.
+    {{< figure src="/ox-hugo/vscode5.png" >}}
+
+    There are plenty more, but you should generally get the idea that most parts of a `launch.json` correspond to some CLI equivalent.
 
 
-### Using emacs {#using-emacs}
+### Debugging in neovim {#debugging-in-neovim}
+
+Fear not ye neovim fanatic. You can have very similar functionality in your neovim environment. To save me some keystrokes, I recommend you check out the following video by `typecraft`. He does a stellar explanation and demo of setting up and using a UI-forward debugging experience in `neovim`.
+
+[Youtube: Typecraft - Configuring Neovim Debugger](https://www.youtube.com/watch?v=oYzZxi3SSnM)
 
 
-### Usingneovim {#usingneovim}
+#### DAP (debugger adapter protocol) {#dap--debugger-adapter-protocol}
+
+Remember how the terminal debugger looked different for `python` and `javascript` (e.g. `b 6` in python vs `sb(6)` in javascript?)
+
+That's because they are different debuggers and have different APIs. This is where `DAP` (debugger adapter protocol) comes in. DAP acts as a unified API for most language debuggers meaning that IDEs like `neovim` and `vscode` only need to have a DAP integration to be able to use the different debuggers.
+
+
+#### Basic Instructions {#basic-instructions}
+
+Genuinely, follow that typecraft video!
+
+1.  Install `nvim-dap` and `nvim-dap-ui`
+2.  Configure some basic key bindings for common debug commands (e.g. `continue` and `set breakpoint`)
+3.  Configure some listeners to open and close helpful UI screens
+4.  Setup and install additional packages as required by your language of choice
+
+
+### Debugging in emacs {#debugging-in-emacs}
+
+Emacs is my favorite editor. It is more configurable than neovim and more capable and usable than every other IDE on the market. It is also a massive PITA sometimes. Getting the debuggers working in emacs was a real hassle. Luckily, I suffered so you don't have to!
+
+I will be using `doom emacs` for this because that's just how I'm rolling these days. But you can adapt this for any flavor of emacs.
+
+
+#### Installing DAPE {#installing-dape}
+
+1.  Comment out anything in your `init.el` file to do with debugging (if on Doom)
+2.  Add this line to your `packages.el` file to install dape
+
+`(package! dape) ;; debugging in emacs`
+
+1.  Add these lines to your `config.el` file to configure a basic debugging setup
+
+<!--listend-->
+
+```emacs-lisp
+;;;; DAPE Debugger Configuration
+(use-package! dape
+  :config
+
+  ;; Optional: Global keybindings
+  (map!
+   :leader
+   :desc "Debug start/continue" "d d" #'dape
+   :desc "Debug stop" "d k" #'dape-stop
+   :desc "Debug restart" "d r" #'dape-restart
+   :desc "Debug next" "d n" #'dape-next
+   :desc "Debug step in" "d i" #'dape-step-in
+   :desc "Debug step out" "d o" #'dape-step-out
+   :desc "Debug continue" "d c" #'dape-continue
+   :desc "Toggle Breakpoint" "d b" #'dape-breakpoint-toggle))
+```
+
+1.  Following [the directions](https://github.com/svaante/dape?tab=readme-ov-file), install any relevant debugger software you need on your system.
+
+
+#### Using DAPE {#using-dape}
+
+After configuring dape and installing I can simply open my target file and use `space d` to see my options. I'll set a breakpoint on line 7 and run the debugger with `space d d`
+![](/ox-hugo/emacs1.png)
+
+This will show the following transient buffer which lets you set different options for the debug adapter you've chosen. In my case, I chose to use `debugpy`. If I just want to run the program, I can just hit `enter`. Alternatively, I could do `debugpy :stopOnEntry t` to have the program pause immediately when starting.
+![](/ox-hugo/emacs2.png)
+
+Once you run the program, we get a familiar looking UI that allows us to debug our program effectively.
+![](/ox-hugo/emacs3.png)
+
+
+## Summary {#summary}
+
+I hope you now have a clearer sense of what a debugger is and how it works. Python and javascript are the easiest to setup. Your actual projects or environments may be more complicated and present any number of challenges. Hopefully, this little bit of knowledge helps you find a path forward. Cheers
 
 
 ## Disclaimers &amp; Extra Tidbits {#disclaimers-and-extra-tidbits}
 
 
-#### Behavior can be different in debug mode {#behavior-can-be-different-in-debug-mode}
-
-<!--list-separator-->
-
--  What about the debugger in my IDE
-
-    There is no difference in the debugger whether you run it in vscode, terminal, emacs, neovim, or some other mechanising\*\* Performance often goes down
+#### Programs can behave differntly when running via debugger {#programs-can-behave-differntly-when-running-via-debugger}
 
 
-#### Some bugs "vanish" in a debugger (usually timing related) {#some-bugs-vanish-in-a-debugger--usually-timing-related}
+#### Some bugs "vanish" in a debugger (usually timing related ones) {#some-bugs-vanish-in-a-debugger--usually-timing-related-ones}
 
 
-#### The debugingnvironment variables might need setup separately {#the-debugingnvironment-variables-might-need-setup-separately}
+#### Environment variables might need to be set separately for debugging {#environment-variables-might-need-to-be-set-separately-for-debugging}
 
 [^fn:1]: This is not true 100% of the time, but for most purposes it is close enough
