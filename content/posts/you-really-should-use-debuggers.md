@@ -8,6 +8,7 @@ draft = false
 [[resources]]
   [resources.params]
     match = "images/(.*)"
+    dest = "images/\\1"
 +++
 
 Ok it is that time again where I write a blog post about something near and dear to my heart: ****Debuggers****.
