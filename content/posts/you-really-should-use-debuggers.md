@@ -12,7 +12,7 @@ draft = false
 
 Ok it is that time again where I write a blog post about something near and dear to my heart: ****Debuggers****.
 
-In this post, we are going to explain why you should use debuggers, what they are, and how to set them up in your editor d'jour whether that is vscode, neovim, or emacs.
+In this post, we are going to explain why you should use debuggers, what they are, and how to set them up in your editor d'jour (whether that is vscode, neovim, or emacs).
 
 Why? Because I love you and more importantly I want people to have better life experiences. Here we go.
 
