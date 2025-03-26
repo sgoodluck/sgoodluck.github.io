@@ -5,6 +5,9 @@ date = 2025-03-25T10:21:00-07:00
 tags = ["debuggers", "dap", "lsp"]
 categories = ["Programming"]
 draft = false
+[[resources]]
+  [resources.params]
+    match = "images/(.*)"
 +++
 
 Ok it is that time again where I write a blog post about something near and dear to my heart: ****Debuggers****.
@@ -277,7 +280,7 @@ Fear not ye emacs and neovim users. You can have the same prettiness in neovim a
 ### Usingneovim {#usingneovim}
 
 
-## Disclaimers {#disclaimers}
+## Disclaimers &amp; Extra Tidbits {#disclaimers-and-extra-tidbits}
 
 
 #### Behavior can be different in debug mode {#behavior-can-be-different-in-debug-mode}
