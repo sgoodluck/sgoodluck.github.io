@@ -11,7 +11,12 @@ Ok it is that time again where I write a blog post about something near and dear
 
 In this post, we are going to explain why you should use debuggers, what they are, and how to set them up in your editor d'jour (whether that is vscode, neovim, or emacs).
 
-Why? Because I love you and more importantly I want people to have better life experiences. Here we go.
+Why? Because I believe that quality matters and that by learning to understand use this tool you'll not only have a better time programming, but that you'll produce better code which is good for everyone.
+
+
+#### Does it make sense with AI and Vibe Coding? {#does-it-make-sense-with-ai-and-vibe-coding}
+
+Absolutely, in fact I would say learning to use a debugger is much more important in the age of AI and Vibe Code. It is the most efficient way to understand your vibe code and to diagnose issues that you or your AI minions can fix.
 
 
 ## Why you should use a debugger {#why-you-should-use-a-debugger}
