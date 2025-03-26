@@ -6,8 +6,50 @@
     <description>Recent content in Tags on The Good Code Guy</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2025 17:31:15 -0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Mar 2025 21:08:05 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dap</title>
+      <link>http://localhost:1313/tags/dap/</link>
+      <pubDate>Tue, 25 Mar 2025 10:21:00 -0700</pubDate>
+      <guid>http://localhost:1313/tags/dap/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Debuggers</title>
+      <link>http://localhost:1313/tags/debuggers/</link>
+      <pubDate>Tue, 25 Mar 2025 10:21:00 -0700</pubDate>
+      <guid>http://localhost:1313/tags/debuggers/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lsp</title>
+      <link>http://localhost:1313/tags/lsp/</link>
+      <pubDate>Tue, 25 Mar 2025 10:21:00 -0700</pubDate>
+      <guid>http://localhost:1313/tags/lsp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ai</title>
+      <link>http://localhost:1313/tags/ai/</link>
+      <pubDate>Wed, 19 Mar 2025 09:25:00 -0700</pubDate>
+      <guid>http://localhost:1313/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Philosophy</title>
+      <link>http://localhost:1313/tags/philosophy/</link>
+      <pubDate>Wed, 19 Mar 2025 09:25:00 -0700</pubDate>
+      <guid>http://localhost:1313/tags/philosophy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>System Configuration</title>
+      <link>http://localhost:1313/tags/system-configuration/</link>
+      <pubDate>Fri, 28 Feb 2025 18:54:00 -0800</pubDate>
+      <guid>http://localhost:1313/tags/system-configuration/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Homebrew</title>
       <link>http://localhost:1313/tags/homebrew/</link>

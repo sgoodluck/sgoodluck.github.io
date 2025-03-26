@@ -3,85 +3,118 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2025-02-21T17:31:15-08:00</lastmod>
+    <lastmod>2025-03-25T21:08:05-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/development/</loc>
-    <lastmod>2025-02-21T16:00:28-08:00</lastmod>
+    <loc>http://localhost:1313/tags/dap/</loc>
+    <lastmod>2025-03-25T21:08:05-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/efficiency/</loc>
-    <lastmod>2025-02-21T16:00:28-08:00</lastmod>
+    <loc>http://localhost:1313/tags/debuggers/</loc>
+    <lastmod>2025-03-25T21:08:05-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/homebrew/</loc>
-    <lastmod>2025-02-21T16:00:28-08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/macos/</loc>
-    <lastmod>2025-02-21T16:00:28-08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/nix-darwin/</loc>
-    <lastmod>2025-02-21T16:00:28-08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/nixdarwin-on-macos/</loc>
-    <lastmod>2025-02-21T16:00:28-08:00</lastmod>
+    <loc>http://localhost:1313/tags/lsp/</loc>
+    <lastmod>2025-03-25T21:08:05-07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-02-21T17:31:15-08:00</lastmod>
+    <lastmod>2025-03-25T21:08:05-07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/system-management/</loc>
-    <lastmod>2025-02-21T16:00:28-08:00</lastmod>
+    <loc>http://localhost:1313/categories/programming/</loc>
+    <lastmod>2025-03-25T21:08:05-07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-02-21T17:31:15-08:00</lastmod>
+    <lastmod>2025-03-25T21:08:05-07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-02-21T17:31:15-08:00</lastmod>
+    <lastmod>2025-03-25T21:08:05-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/you-really-should-use-debuggers/</loc>
+    <lastmod>2025-03-25T21:08:05-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/10000-monkeys/</loc>
+    <lastmod>2025-03-19T13:04:07-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/ai/</loc>
+    <lastmod>2025-03-19T13:04:07-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/opinion/</loc>
+    <lastmod>2025-03-19T13:04:07-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/philosophy/</loc>
+    <lastmod>2025-03-19T13:04:07-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/development/</loc>
+    <lastmod>2025-02-28T19:38:40-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/my-current-environment/</loc>
+    <lastmod>2025-02-28T19:38:40-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/system-configuration/</loc>
+    <lastmod>2025-02-28T19:38:40-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/homebrew/</loc>
+    <lastmod>2025-02-28T18:14:49-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/macos/</loc>
+    <lastmod>2025-02-28T18:14:49-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/nix/</loc>
+    <lastmod>2025-02-28T18:14:49-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/nix-darwin/</loc>
+    <lastmod>2025-02-28T18:14:49-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/nixdarwin-on-macos/</loc>
+    <lastmod>2025-02-28T18:14:49-08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/system-management/</loc>
+    <lastmod>2025-02-28T18:14:49-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/blogging/</loc>
-    <lastmod>2025-02-21T17:31:15-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/blogging/</loc>
-    <lastmod>2025-02-21T17:31:15-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/blogging-with-emacs/</loc>
-    <lastmod>2025-02-21T17:31:15-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/emacs/</loc>
-    <lastmod>2025-02-21T17:31:15-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/emacs/</loc>
-    <lastmod>2025-02-21T17:31:15-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/github/</loc>
-    <lastmod>2025-02-21T17:31:15-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/hugo/</loc>
-    <lastmod>2025-02-21T17:31:15-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/org/</loc>
-    <lastmod>2025-02-21T17:31:15-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/org-mode/</loc>
-    <lastmod>2025-02-21T17:31:15-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/philosophy/</loc>
-    <lastmod>2025-02-21T16:52:18-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/pluralism/</loc>
-    <lastmod>2025-02-21T16:52:18-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/politics/</loc>
-    <lastmod>2025-02-21T16:52:18-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/rationalism/</loc>
-    <lastmod>2025-02-21T16:52:18-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/truth-in-tension/</loc>
-    <lastmod>2025-02-21T16:52:18-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/about/</loc>
-    <lastmod>2025-02-21T16:57:28-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/personal/</loc>
-    <lastmod>2025-02-21T16:57:28-08:00</lastmod>
+    <lastmod>2025-02-28T18:10:59-08:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/series/</loc>
   </url>

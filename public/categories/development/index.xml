@@ -6,8 +6,15 @@
     <description>Recent content in Development on The Good Code Guy</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2025 16:00:28 -0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2025 19:38:40 -0800</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My current environment</title>
+      <link>http://localhost:1313/posts/my-current-environment/</link>
+      <pubDate>Fri, 28 Feb 2025 18:54:00 -0800</pubDate>
+      <guid>http://localhost:1313/posts/my-current-environment/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ll update this post periodically to reflect my current tooling and setup.&lt;/p&gt;&#xA;&lt;h2 id=&#34;emacs-nix-darwin-macos-and-more&#34;&gt;Emacs, Nix-Darwin, MacOS, and more &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&amp;lt;2025-02-28 Fri&amp;gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Now that I&amp;rsquo;ve finished refactoring my entire development and writing environment, why not specify why I&amp;rsquo;m using, what I&amp;rsquo;m using and why? Maybe it&amp;rsquo;ll be useful for you&lt;/p&gt;&#xA;&lt;h3 id=&#34;hardware&#34;&gt;Hardware&lt;/h3&gt;&#xA;&lt;h4 id=&#34;computer--s--macbook-air--apple-silicon--and-x1-carbon--thinkpad&#34;&gt;Computer(s): Macbook Air (Apple Silicon) &amp;amp; X1 Carbon (Thinkpad)&lt;/h4&gt;&#xA;&lt;p&gt;I use both mac and linux pretty regularly, I have them both configured using &lt;code&gt;Nix&lt;/code&gt; which allows parity between system configurations. New Apple computers are superb, but I can&amp;rsquo;t let go of my Thinkpad because I love tinkering on it and I&amp;rsquo;m sure I&amp;rsquo;ll sell the macbook one day but keep the thinkpad for many more years.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Nix-Darwin on MacOS</title>
       <link>http://localhost:1313/posts/nixdarwin-on-macos/</link>

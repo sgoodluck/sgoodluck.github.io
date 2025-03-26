@@ -6,20 +6,34 @@
     <description>Recent content in Categories on The Good Code Guy</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Feb 2025 17:31:15 -0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Mar 2025 21:08:05 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programming</title>
+      <link>http://localhost:1313/categories/programming/</link>
+      <pubDate>Tue, 25 Mar 2025 10:21:00 -0700</pubDate>
+      <guid>http://localhost:1313/categories/programming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Opinion</title>
+      <link>http://localhost:1313/categories/opinion/</link>
+      <pubDate>Wed, 19 Mar 2025 09:25:00 -0700</pubDate>
+      <guid>http://localhost:1313/categories/opinion/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Development</title>
       <link>http://localhost:1313/categories/development/</link>
-      <pubDate>Fri, 21 Feb 2025 15:57:00 -0800</pubDate>
+      <pubDate>Fri, 28 Feb 2025 18:54:00 -0800</pubDate>
       <guid>http://localhost:1313/categories/development/</guid>
       <description></description>
     </item>
     <item>
-      <title>Efficiency</title>
-      <link>http://localhost:1313/categories/efficiency/</link>
+      <title>Nix</title>
+      <link>http://localhost:1313/categories/nix/</link>
       <pubDate>Fri, 21 Feb 2025 15:57:00 -0800</pubDate>
-      <guid>http://localhost:1313/categories/efficiency/</guid>
+      <guid>http://localhost:1313/categories/nix/</guid>
       <description></description>
     </item>
     <item>

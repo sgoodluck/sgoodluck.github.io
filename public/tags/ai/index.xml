@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ai on The Good Code Guy</title>
+    <link>http://localhost:1313/tags/ai/</link>
+    <description>Recent content in Ai on The Good Code Guy</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 19 Mar 2025 13:04:07 -0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10,000 Monkeys</title>
+      <link>http://localhost:1313/posts/10000-monkeys/</link>
+      <pubDate>Wed, 19 Mar 2025 09:25:00 -0700</pubDate>
+      <guid>http://localhost:1313/posts/10000-monkeys/</guid>
+      <description>&lt;p&gt;Artificial intelligence is an incredibly powerful tool that has been building in capability for decades. Only in the last couple of years has it moved into the mainstream and brings with it an incredible set of changes the likes of which we haven&amp;rsquo;t seen since the dawn of the internet.&lt;/p&gt;&#xA;&lt;h3 id=&#34;10-000-monkeys&#34;&gt;10,000 Monkeys&lt;/h3&gt;&#xA;&lt;p&gt;There&amp;rsquo;s an old adage that goes something like &amp;ldquo;If an infinite number of monkeys typed on an infinite number of typewriters for an infinite time, they would eventually produce the Bible&amp;rdquo;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
