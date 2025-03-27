@@ -11,15 +11,17 @@ Hi, I'm Seth and this is my blog.
 
 ## About tgcg.xyz {#about-tgcg-dot-xyz}
 
-_My primary disclaimer is that the contents here are always evolving and you may encounter opinions that I no longer hold or find advice that is no longer valid._
+_Disclaimer: The contents here are always evolving and you may encounter opinions that I no longer hold or find advice that is no longer valid_
 
-The purpose of this blog is to give me a space to write about whatever I want. My interests (and hence the content you might encounter) are broad and cover everything from politics &amp; philosophy to computer science &amp; physics.
+The purpose of this blog is to give me a space to write about whatever I want. My interests (and hence the content you might encounter) are broad and cover everything from politics &amp; philosophy to computer science &amp; physics, to exercise &amp; travel.
 
-_The secondary disclaimer is that you will encounter my unfiltered opinions about many topics._
+_Disclaimer 2: You will encounter my unfiltered opinions._
 
-Some of these you might find agreeable, others amusing, and some upsetting. That's fine. My purpose isn't to impress you, it is purely to express myself.
+Some you might find agreeable, others amusing, and others upsetting. My purpose isn't to impress you, it is to express myself.
 
-Having said that, I hope some of the content here proves useful for you. Many times I have searched desperately for something to eventually chance upon a blog written by some stranger on the internet who shared exactly the advice or guide I needed. This blog is in no small part also my way of trying to give back to our collective digital mind with useful nuggets I've picked up along the way.
+Having said that, I hope some of the content proves useful for you. Many times I have searched for something to eventually chance upon a blog written by some stranger on the internet who shared exactly the advice or guide I needed.
+
+This blog is in no small part my way of giving back to our collective digital mind with useful nuggets I've picked up along the way.
 
 
 ### The Good Code Guy {#the-good-code-guy}
