@@ -12,8 +12,6 @@ I'll update this post periodically to reflect my current tooling and setup.
 
 ## Emacs, Nix-Darwin, MacOS, and more <span class="timestamp-wrapper"><span class="timestamp">&lt;2025-02-28 Fri&gt;</span></span> {#emacs-nix-darwin-macos-and-more}
 
-Now that I've finished refactoring my entire development and writing environment, why not specify why I'm using, what I'm using and why? Maybe it'll be useful for you
-
 
 ### Hardware {#hardware}
 
@@ -52,12 +50,14 @@ I'm currently using `emacs-plus` configured with `doom emacs` as my primary edit
 
 In short, every other editor, not matter how configured pails in comparison to the speed, configurability, and efficiency in Emacs. Bold statement, I know. But for just about everything I do (including writing this blog) emacs takes the cake. Emacs, especially when paired with a nice starter configuration like `doom emacs` truly makes for some superb workloads (and you get to use Vim keybindings).
 
-The truth is, even the most well-built setup in something like neovim only ever approaches the functionality of emacs. Neovim is not an IDE and most "riced" neovim setups do their best (admirably) to make it into one. For me, neovim is a lovely text editor. Emacs is more like an entire operating system. I've used both extensively for years and I will continue to use both; Emacs is my go-to system for authoring files (code or other writing) but neovim is my fast "let me edit this file right here right now" editor of choice. I don't see why I would ever change that. I'll write a full blog post about Emacs compared neovim and other editors one of these days.
+The truth is, even the most well-built setup in something like neovim only ever approaches the functionality of emacs. Neovim is not an IDE and most "riced" neovim setups do their best (admirably) to make it into one. For me, neovim is a lovely text editor. Emacs is more like an entire operating system. I've used both extensively for years and I will continue to use both; Emacs is my go-to system for authoring files (code or other writing) but neovim is my fast "let me edit this file right here right now" editor of choice. I don't see why I would ever change that. I use both daily. I'll write a full blog post about Emacs compared neovim and other editors one of these days.
 
 
 ### Window Management: Amethyst {#window-management-amethyst}
 
-I really LOVE `yabai`, but have been too busy to bother configuring it. `Amethyst` works right of the box and paired with `Karabiner` gives me 75% of what I would look for out of Yabai. I'll probably still configure Yabai again one day (for perfect parity with i3 on my thinkpad). For now it is fine though
+On linux, I live and breathe by tiling window managers. On a mac, I really LOVE `yabai`, but have been too busy to bother configuring it again. `Amethyst` works right of the box and paired with `Karabiner` gives me 75% of what I would look for out of Yabai.
+
+I'll probably still configure Yabai again one day (for perfect parity with i3 on my thinkpad). For now it is fine though.
 
 
 ### Browser: Zen {#browser-zen}
@@ -67,7 +67,7 @@ Really enjoyable Firefox derived browser. Beautiful and clean. Ladybird also loo
 
 ### Terminal: Alacritty {#terminal-alacritty}
 
-I've used a few terminals over the years (including the newest ones like Ghostty) and came to the conlusion that Alacritty served my needs the best. It is simple, supremely performant, and light on resources.
+I've used a few terminals over the years (including the newest ones like Ghostty) and came to the conclusion that Alacritty served my needs the best. It is simple, supremely performant, and light on resources.
 
 
 ### Passwords: Proton Pass &amp; Bitwarden {#passwords-proton-pass-and-bitwarden}
@@ -100,3 +100,11 @@ Fantastic 3D printers that rival flagship DIY systems. Jailbreaking it with X1Pl
 Genuinely, Home Assistant is a pleasure to use. Highly recommend for any home automation
 
 That's all for now, maybe I'll add more stuff if it comes up. If I change anything significant, I'll make an update.
+
+
+## Other random things {#other-random-things}
+
+-   Monitor Light
+-   Re-usable metal waterbottle
+-   Maplewood standing desk
+-   Ergonomic office chair
