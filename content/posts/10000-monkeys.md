@@ -31,7 +31,7 @@ No matter how sophisticated, it is still just a room of unconscious monkeys goin
 
 ### The pitfall of modern AI {#the-pitfall-of-modern-ai}
 
-AI (at least at its current level) cannot think. It cannot reason about what it is doing because it doesn't have the right hardware. Even the most advanced models on the planet have a comparative number of synapses to that of a common housecat (and arguably an AI synapse is much simpler and clumsier than its biological counterpart).
+AI (at least at its current level) cannot think[^fn:1]. It cannot reason about what it is doing because it doesn't have the right hardware. Even the most advanced models on the planet have a comparative number of synapses to that of a common housecat (and arguably an AI synapse is much simpler and clumsier than its biological counterpart).
 
 Would you trust your housecat to write perfect code or to interpret multiple factual articles? Unless you're my feline-phillic father, I doubt it.
 
@@ -54,7 +54,7 @@ It would be incorrect to say that AI isn't important. As someone who uses AI too
 
 AI tools are to our collective ability comparable to the mouse, keyboard, and the modern GUI. They don't fundamentally change what gets done, but they forever change how we get those things done.
 
-With the right prompts, an AI tool like claude can produce a complex multi-file, multi-API python data pipeline that would have taken me (a professional Software Engineer with a decade of experience) the better part of a week in minutes (ok hours and days if you count the re-prompting, rate limits, bug fixing, and so on).A few decades ago, the same program would be have taken months and a team of researchers violently punching holes in cardstock.
+With the right prompts, an AI tool like claude can produce a complex multi-file, multi-API python data pipeline that would have taken me (a professional Software Engineer with a decade of experience) the better part of a week in minutes (ok hours and days if you count the re-prompting, rate limits, bug fixing, and so on). A few decades ago, the same program would be have taken months and a team of researchers violently punching holes in cardstock.
 
 In this way, AI tooling is a serious advance in our capability and velocity. Someone with no programming experience and enough stubborn determination can produce AI-generated artifacts that rival and even exceed what a lone senior engineer could produce.
 
@@ -65,7 +65,7 @@ It depends
 
 ### How to use modern AI {#how-to-use-modern-ai}
 
-As someone who works with and writes technical systems for a living, I've had a front-row seat to the modern era of AI and I think it is amazing. I believe AI will be used by just about every person in every organization everywhere in the world. I also believe this is a great thing.
+As someone who works with and writes technical systems for a living, I've had a front-row seat to the modern era of AI and I think it is amazing. I believe AI will be used by just about every person in every organization everywhere in the world and that this is a good thing.
 
 My gripe stems from the fallacy that using AI is a substitute for good thinking or good business fundamentals; it isn't (AI can't fix stupid).
 
@@ -93,7 +93,7 @@ If you can, get your AI kitten before birth and fill it with monkeys you specifi
 
 When you choose to use `GPT3.5` or `Claude Sonnet` you are using a model trained from the start to behave a certain way.
 
-This exercise non-trivial and if you don't start with a base model, is more like assembling the genetic code for your cat, growing it in a test tube, and then training it until it is ready for action.
+This exercise is non-trivial and if you don't start with a base model, is like assembling the genetic code for your cat, growing it in a test tube, and then training it until it is ready for action.
 
 Doing this isn't necessary for most cases and YMMV.
 
@@ -102,7 +102,7 @@ Doing this isn't necessary for most cases and YMMV.
 
 Do you know what `GPT` stands for? It stands for Generative ****Pre-Trained**** Transformer. In other words, your housecat has already been trained to be a cat but it doesn't know where your litterbox is and will almost certainly ruin your fancy sofa if you aren't careful.
 
-I believe Abraham Lincoln said something along the lines of:
+Abraham Lincoln said something along the lines of:
 
 > "You can please some of the people all of the time, you can please all of the people some of the time, but you can't please all of the people all of the time"
 
@@ -123,7 +123,7 @@ Whenever you use Perplexity, or upload a file to your AI d'jour, it is making us
 
 Effectively, you are giving the AI data that makes it more likely to generate output that aligns with what you expect. Your cat is more likely to use a litterbox if it knows about it.
 
-Ideally, you would use a combination both. Train a model and ensure that it has direct access to information you want it to use or fine-tuning with RAG.
+Ideally, you would use a combination of both. Train a model and ensure that it has direct access to information you want it to use or fine-tuning with RAG.
 
 
 #### Use a HITL (human in the loop) when building complex systems {#use-a-hitl--human-in-the-loop--when-building-complex-systems}
@@ -132,13 +132,11 @@ Remember, _AI cannot think and has no idea what it is doing_. Fancy multi-agent 
 
 Ideally, you want a conscious human interacting with or at least overseeing AI operations to make sure things are behaving.
 
-Whatever process you create, putting a human in the loop can actually speed things up as they can eep your cat full of brainless monkeys going after the right bananas.
+Whatever process you create, putting a human in the loop can actually speed things up as they can keep your cat full of brainless monkeys going after the right bananas.
 
-HITLs are much like shepherds and can guide the flock to greener pastures while keeping the wolves away.
+HITLs are much like shepherds and can guide the flock to greener pastures while keeping the wolves away. Put a human in charge of your minion of AI housecats and you'll have much better results because the average human can reason at least 1000x better than even the fanciest AI model.
 
-I'm getting tired, so these analogies are getting out of hand. Put a human in charge of your minion of AI housecats and you'll have much better results because the human can reason at least 1000x better than even the fanciest AI model.
-
-Similarly, AI tools, like a mouse and keyboard, make a human much more capable than they are alone.
+AI tools, like a mouse and keyboard, also make a human much more capable than they are alone.
 
 
 #### Accept a degree of slop {#accept-a-degree-of-slop}
@@ -159,3 +157,5 @@ If you do these things, you'll still only have something dumber than a housecat,
 
 
 ## Good luck and happy prompting. {#good-luck-and-happy-prompting-dot}
+
+[^fn:1]: 3Blue1Brown has the best video series on how these work by a country mile. [It is](https://www.youtube.com/watch?v=LPZh9BOjkQs) worth the watch. The full Neural Networks playlist is phenomenal.
