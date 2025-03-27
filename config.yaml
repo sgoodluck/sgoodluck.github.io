@@ -1,23 +1,23 @@
-baseURL: 'https://tgcg.xyz'
-languageCode: 'en-us'
-title: 'The Good Code Guy'
-theme: 'smol'
+baseURL: "https://tgcg.xyz"
+languageCode: "en-us"
+title: "The Good Code Guy"
+theme: "smol"
 
 # Build settings
-buildDrafts: false  # Prevents posts marked as drafts from being included in the final build
-buildFuture: false  # Won't publish posts with a future date until that date arrives
+buildDrafts: false # Prevents posts marked as drafts from being included in the final build
+buildFuture: false # Won't publish posts with a future date until that date arrives
 buildExpired: false # Won't publish posts that have an expiration date that has passed
 
 # Content Management
 enableGitInfo: true # Uses Git commit history for content dates if date unspecified
-enableRobotsTXT: true # Allow robots to index
+enableRobotsTXT: false # Allow robots to index
 
 params:
-  subtitle: "A personal blog about whatever I want"
+  subtitle: "Personal blog on things I care about"
   dateFmt: "02.01.2006 15:04"
 
   # SEO and Social settings
-  description: "A personal blog about whatever I want" # Add a description for SEO
+  description: "Blog on technology, programming, and more" # Add a description for SEO
   # images: ["site-feature-image.jpg"] # Add if you have a default sharing image
 
 menu:
