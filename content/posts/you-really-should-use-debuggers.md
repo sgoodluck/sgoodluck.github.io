@@ -9,7 +9,7 @@ draft = false
 
 This a post about something near and dear to my heart: ****Debuggers****.
 
-In this post, we are going to explain why you should use a debugger, what they are, and how to set them up in your favorite editor (whether that is vscode, neovim, or emacs).
+In this post, we are going to explain why you should use a debugger, what they are, and how to set them up in your favorite editor (whether that is vscode, neovim, emacs, or any other editor).
 
 I believe that quality matters and that by understanding this incredible tool you'll not only have a better time programming, you'll produce better code which is better for the world.
 
@@ -40,7 +40,7 @@ This gives you incredible levels of insight and control over your programs. Bug 
 
 ### Better for learning {#better-for-learning}
 
-If you are jumping into an existing project at work or contributing to an open source project, using the debugger is one of the most efficient ways to become familiar with a new codebase. You can simply run the debugger and watch the code execute step-by-step and quickly develop a sense of how the program functions..
+If you are jumping into an existing project at work or contributing to an open source project, using the debugger is one of the most efficient ways to become familiar with a new codebase. You can simply run the debugger and watch the code execute step-by-step and quickly develop a sense of how the program functions.
 
 
 ### Why doesn't everyone use them? {#why-doesn-t-everyone-use-them}
@@ -65,7 +65,7 @@ Running them is often as simple as doing `python -m pdb myProj.py` instead of `p
 
 An analogy: Executing code with the debugger is like running your program in its own special container. The container has its own behavior and tooling that allow you to pause and inspect code while the program runs.
 
-Thus when you run a debugger, the debugger loads your program, instruments magical hooks and monitors (give you the ability to inspect variables normally hidden in a maze of memory), and manages your program's execution (allowing you to pause and step through code).
+Thus when you run a debugger, the debugger loads your program, instruments magical hooks and monitors (giving you the ability to inspect variables normally hidden in a maze of memory), and manages your program's execution (allowing you to pause and step through code).
 
 
 #### What about the debugger in my IDE? {#what-about-the-debugger-in-my-ide}
@@ -76,7 +76,7 @@ There is no difference in the debugger whether you run it in `vscode`, `terminal
 
 Your `launch.json` file in `vscode` just instructs vscode on how to run the language's builtin debugger using something called `DAP` (debugger adapter protocol), but more on that later.
 
-****Key Takeaway: A debugger is a part of (or an add-on) to the programming language, not a part of your editor****
+****Key Takeaway: A debugger is a part of (or an add-on to) the programming language, not a part of your editor****
 
 
 ### Debugger Commands {#debugger-commands}
@@ -257,7 +257,7 @@ Looking briefly at our test cases, we can see that our `total` variable seems to
 
 Let's add a breakpoint on `line 6` where we are calculating this variable by using `b 6` (toggle breakpoint at line 6).
 
-Now, we can type `c` (for continue) which will run the code _until it hits a breakpoint_.At this point we the program has paused. We can inspect and change any variable in scope.
+Now, we can type `c` (for continue) which will run the code _until it hits a breakpoint_. At this point we the program has paused. We can inspect and change any variable in scope.
 
 We want to watch the value of `i` and `total`, so we can use `display i, total` which instructs pdb to print these variables each time it pauses on the breakpoint.
 ![](/ox-hugo/Terminal3.png)
